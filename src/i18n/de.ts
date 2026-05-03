@@ -10,12 +10,12 @@ export default {
   },
   home: {
     greeting: 'Hallo, ich bin',
-    tagline: 'Software-Architekt, Engineering Lead und bekennender Nerd.\nTagsüber verteilte Systeme und Teams — abends Pinball und Lötzinn.',
+    tagline: 'Software-Architekt, Engineering Lead und bekennender Nerd.\nTagsüber verteilte Systeme und Teams — abends Flipper und Lötzinn.',
     proCardTitle: 'Software Architect\n& Engineering Lead',
-    proCardDesc: 'Von der Softwareentwicklung über Cloud-native Architektur bis zur Leitung des internen Software-Departments bei Europa-Park.',
+    proCardDesc: 'Von der Softwareentwicklung über Cloud-native Architektur bis zur Leitung des internen Software-Departments beim Europa-Park.',
     hobbyCardTitle: 'Pinball Restorer\n& Retro Nerd',
-    hobbyCardDesc: 'Pinball-Maschinen reparieren, restaurieren und zum Leben erwecken. Arcade, Retro-Gaming und alles was blinkt und klingelt.',
-    enter: 'Eintreten →',
+    hobbyCardDesc: ' Vom Flipper reparieren, restaurieren und zum Leben erwecken. Arcade, Retro-Gaming und alles was blinkt und klingelt.',
+    enter: 'Let\'s go →',
   },
   pro: {
     pageTitle: 'Professionell',

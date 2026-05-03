@@ -3,7 +3,7 @@ subtitle: "Michael Schempp — Software Architect & Engineering Lead"
 experience:
   - role: Head of Digital Development
     company: Europa-Park GmbH & Co Mack KG
-    period: "2020 — present"
+    period: "2021 — present"
     description: "Europa-Park had no internal software development for its own domain services — that needed to change. I joined in 2020 to bring technical clarity to a fragmented digital landscape: external agencies working time-and-material on complex domains they didn't really understand, and a cloud infrastructure that was more aspiration than reality.\n\nFirst concrete step: MackOne Account — a central SSO for all digital platforms at the park. Then: built an internal development team from scratch. In 2021 the team was still deploying via FTP. Today everything runs containerised on a hybrid cloud infrastructure (GCP + STACKIT), provisioned with Terraform, Kubernetes as the runtime, CI/CD via Bitbucket Pipelines and ArgoCD.\n\nThe direction: internal platform teams that own core services, while external agencies build applications on top of our infrastructure and SDKs."
     tags: [Engineering Leadership, Platform Engineering, Cloud Native, Kubernetes, Terraform, CIAM]
   - role: Software Architect

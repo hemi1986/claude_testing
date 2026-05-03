@@ -37,11 +37,11 @@ const [hobbyTitle, hobbySub] = tr.home.hobbyCardTitle.split('\n');
         <a href={getLocalePath(lang, '/pro')} class="group block p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-pro)] transition-all duration-300 hover:shadow-[0_0_30px_var(--color-pro-dim)]">
           <div class="font-mono text-xs text-[var(--color-pro)] mb-3 tracking-widest">PRO://</div>
           <h2 class="text-xl font-bold mb-2 group-hover:text-[var(--color-pro)] transition-colors">
-            {proTitle}<br/>&amp;{proSub}
+            {proTitle}<br/>{proSub}
           </h2>
           <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">{tr.home.proCardDesc}</p>
           <div class="flex flex-wrap gap-2">
-            {['Architecture', 'Cloud Native', 'Leadership', 'Distributed Systems'].map(tag => (
+            {['Architecture', 'Cloud Native', 'Leadership', 'Distributed Systems', 'AI'].map(tag => (
               <span class="font-mono text-xs px-2 py-0.5 rounded bg-[var(--color-pro-dim)] text-[var(--color-pro)]">{tag}</span>
             ))}
           </div>
@@ -51,13 +51,13 @@ const [hobbyTitle, hobbySub] = tr.home.hobbyCardTitle.split('\n');
         </a>
 
         <a href={getLocalePath(lang, '/hobby')} class="group block p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-hobby)] transition-all duration-300 hover:shadow-[0_0_30px_var(--color-hobby-dim)]">
-          <div class="font-mono text-xs text-[var(--color-hobby)] mb-3 tracking-widest">PLAY://</div>
+          <div class="font-mono text-xs text-[var(--color-hobby)] mb-3 tracking-widest">HOBBY://</div>
           <h2 class="text-xl font-bold mb-2 group-hover:text-[var(--color-hobby)] transition-colors">
-            {hobbyTitle}<br/>&amp;{hobbySub}
+            {hobbyTitle}<br/>{hobbySub}
           </h2>
           <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">{tr.home.hobbyCardDesc}</p>
           <div class="flex flex-wrap gap-2">
-            {['Pinball', 'Arcade', 'Retro', 'Restore'].map(tag => (
+            {['Pinball', 'Arcade', 'Retro', 'Creating', '3D Printing'].map(tag => (
               <span class="font-mono text-xs px-2 py-0.5 rounded bg-[var(--color-hobby-dim)] text-[var(--color-hobby)]">{tag}</span>
             ))}
           </div>

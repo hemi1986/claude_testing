@@ -15,7 +15,7 @@ export default {
     proCardDesc: 'From software development to cloud-native architecture to leading the internal software department at Europa-Park.',
     hobbyCardTitle: 'Pinball Restorer\n& Retro Nerd',
     hobbyCardDesc: 'Repairing, restoring and bringing pinball machines back to life. Arcade, retro gaming and everything that blinks and rings.',
-    enter: 'Enter →',
+    enter: 'Let\s go →',
   },
   pro: {
     pageTitle: 'Professional',
