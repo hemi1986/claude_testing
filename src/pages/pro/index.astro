@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import LightboxImage from '@components/LightboxImage.astro';
 import { getLang, t, getLocalePath, type Lang } from '@i18n';
 import { getBlogPosts, getProjects, getProAbout } from '@content/utils';
 import { render } from 'astro:content';
@@ -23,16 +24,28 @@ const recentProjects = (await getProjects('pro', lang))
   <div class="max-w-4xl mx-auto px-4 py-16">
 
     <div class="mb-16">
-      <p class="font-mono text-sm text-[var(--color-pro)] mb-4 tracking-widest">PRO://about</p>
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Michael Schempp</h1>
-      <div class="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl leading-relaxed prose prose-invert"><AboutContent /></div>
-      <div class="flex flex-wrap gap-3">
-        <a href={`${base}/pro/cv`} class="px-4 py-2 rounded-lg font-mono text-sm font-bold text-[var(--color-bg)] bg-[var(--color-pro)] hover:opacity-90 transition-opacity">
-          {tr.pro.cvButton}
-        </a>
-        <a href={`${base}/pro/contact`} class="px-4 py-2 rounded-lg font-mono text-sm border border-[var(--color-pro)] text-[var(--color-pro)] hover:bg-[var(--color-pro-dim)] transition-colors">
-          {tr.pro.contactButton}
-        </a>
+      <div class="flex flex-col md:flex-row md:items-start gap-8">
+        <div class="flex-1">
+          <p class="font-mono text-sm text-[var(--color-pro)] mb-4 tracking-widest">PRO://about</p>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">Michael Schempp</h1>
+          <div class="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl leading-relaxed prose prose-invert"><AboutContent /></div>
+          <div class="flex flex-wrap gap-3">
+            <a href={`${base}/pro/cv`} class="px-4 py-2 rounded-lg font-mono text-sm font-bold text-[var(--color-bg)] bg-[var(--color-pro)] hover:opacity-90 transition-opacity">
+              {tr.pro.cvButton}
+            </a>
+            <a href={`${base}/pro/contact`} class="px-4 py-2 rounded-lg font-mono text-sm border border-[var(--color-pro)] text-[var(--color-pro)] hover:bg-[var(--color-pro-dim)] transition-colors">
+              {tr.pro.contactButton}
+            </a>
+          </div>
+        </div>
+        <div class="shrink-0 md:mt-10">
+          <LightboxImage
+            src="/images/pro/about_picture.jpg"
+            alt="Michael Schempp at DevLand 2026"
+            caption="Myself and John Romero at DevLand 2026 at Europa-Park"
+            imgClass="w-48 md:w-56 rounded-lg border border-[var(--color-pro)] object-cover"
+          />
+        </div>
       </div>
     </div>
 

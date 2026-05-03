@@ -1,0 +1,84 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption: string;
+  imgClass?: string;
+}
+
+const { src, alt, caption, imgClass = '' } = Astro.props;
+const id = `lb-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<figure>
+  <button class="lightbox-trigger block cursor-zoom-in" data-lightbox={id} aria-label={`Open: ${alt}`}>
+    <img src={src} alt={alt} class={imgClass} />
+  </button>
+  <figcaption class="mt-2 text-xs text-[var(--color-text-muted)] font-mono leading-snug" style="max-width: 14rem;">
+    {caption}
+  </figcaption>
+</figure>
+
+<div
+  id={id}
+  role="dialog"
+  aria-modal="true"
+  aria-label={alt}
+  class="lightbox fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 opacity-0 pointer-events-none transition-opacity duration-200 p-6"
+>
+  <button
+    class="lightbox-close absolute top-4 right-5 font-mono text-sm text-white/60 hover:text-white transition-colors"
+    aria-label="Close"
+  >
+    [✕ close]
+  </button>
+  <img
+    src={src}
+    alt={alt}
+    class="max-h-[85vh] max-w-full object-contain rounded-lg shadow-2xl"
+  />
+  <p class="mt-4 text-white/70 text-sm font-mono text-center">{caption}</p>
+</div>
+
+<script>
+  function setupLightboxes() {
+    document.querySelectorAll<HTMLButtonElement>('[data-lightbox]').forEach(btn => {
+      if (btn.dataset.lightboxReady) return;
+      btn.dataset.lightboxReady = '1';
+
+      const overlay = document.getElementById(btn.dataset.lightbox!)!;
+
+      const open = () => {
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = 'hidden';
+      };
+      const close = () => {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+      };
+
+      btn.addEventListener('click', open);
+      overlay.querySelector('.lightbox-close')!.addEventListener('click', close);
+      overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+    });
+  }
+
+  function setupEscapeKey() {
+    if ((document as any)._lightboxEscBound) return;
+    (document as any)._lightboxEscBound = true;
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      document.querySelectorAll<HTMLElement>('.lightbox:not(.pointer-events-none)').forEach(el => {
+        el.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  setupLightboxes();
+  setupEscapeKey();
+  document.addEventListener('astro:page-load', () => {
+    setupLightboxes();
+    setupEscapeKey();
+  });
+</script>

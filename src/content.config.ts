@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'zod';
 import { glob } from 'astro/loaders';
 
 const blogSchema = z.object({
@@ -55,22 +56,19 @@ const blog = (base: string) =>
 const projects = (base: string) =>
   defineCollection({ loader: glob({ pattern: '*.md', base }), schema: projectSchema });
 
-const about = (base: string, schema: typeof proAboutSchema | typeof hobbyAboutSchema) =>
-  defineCollection({ loader: glob({ pattern: '*.md', base }), schema });
-
 export const collections = {
-  'pro-blog-de':      blog('./src/content/pro/blog/de'),
-  'pro-blog-en':      blog('./src/content/pro/blog/en'),
-  'pro-projects-de':  projects('./src/content/pro/projects/de'),
-  'pro-projects-en':  projects('./src/content/pro/projects/en'),
-  'hobby-blog-de':    blog('./src/content/hobby/blog/de'),
-  'hobby-blog-en':    blog('./src/content/hobby/blog/en'),
+  'pro-blog-de':       blog('./src/content/pro/blog/de'),
+  'pro-blog-en':       blog('./src/content/pro/blog/en'),
+  'pro-projects-de':   projects('./src/content/pro/projects/de'),
+  'pro-projects-en':   projects('./src/content/pro/projects/en'),
+  'hobby-blog-de':     blog('./src/content/hobby/blog/de'),
+  'hobby-blog-en':     blog('./src/content/hobby/blog/en'),
   'hobby-projects-de': projects('./src/content/hobby/projects/de'),
   'hobby-projects-en': projects('./src/content/hobby/projects/en'),
-  'pro-about-de':     about('./src/content/pro/about/de', proAboutSchema),
-  'pro-about-en':     about('./src/content/pro/about/en', proAboutSchema),
-  'hobby-about-de':   about('./src/content/hobby/about/de', hobbyAboutSchema),
-  'hobby-about-en':   about('./src/content/hobby/about/en', hobbyAboutSchema),
-  'pro-cv-de':        defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/pro/cv/de' }), schema: cvSchema }),
-  'pro-cv-en':        defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/pro/cv/en' }), schema: cvSchema }),
+  'pro-about-de':      defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/pro/about/de' }), schema: proAboutSchema }),
+  'pro-about-en':      defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/pro/about/en' }), schema: proAboutSchema }),
+  'hobby-about-de':    defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/hobby/about/de' }), schema: hobbyAboutSchema }),
+  'hobby-about-en':    defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/hobby/about/en' }), schema: hobbyAboutSchema }),
+  'pro-cv-de':         defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/pro/cv/de' }), schema: cvSchema }),
+  'pro-cv-en':         defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/pro/cv/en' }), schema: cvSchema }),
 };

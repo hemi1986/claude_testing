@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import LightboxImage from '@components/LightboxImage.astro';
 import { getLang, t, getLocalePath, type Lang } from '@i18n';
 import { getBlogPosts, getProjects, getHobbyAbout } from '@content/utils';
 import { render } from 'astro:content';
@@ -24,19 +25,31 @@ const recentProjects = (await getProjects('hobby', lang))
 
     <div class="mb-16 relative">
       <div class="absolute -top-4 -left-2 font-mono text-6xl opacity-5 select-none pointer-events-none">████████</div>
-      <p class="font-mono text-sm text-[var(--color-hobby)] mb-4 tracking-widest relative z-10">PLAY://about</p>
-      <h1 class="text-4xl md:text-5xl font-bold mb-6 relative z-10">
-        Pinball &amp;<br/>
-        <span style="color: var(--color-hobby)" class="glow-hobby">Retro Stuff</span>
-      </h1>
-      <div class="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl leading-relaxed prose prose-invert"><AboutContent /></div>
-      <div class="flex flex-wrap gap-3">
-        <a href={`${base}/hobby/projects`} class="px-4 py-2 rounded-lg font-mono text-sm font-bold text-[var(--color-bg)] bg-[var(--color-hobby)] hover:opacity-90 transition-opacity">
-          {tr.hobby.projectsButton}
-        </a>
-        <a href={`${base}/hobby/blog`} class="px-4 py-2 rounded-lg font-mono text-sm border border-[var(--color-hobby)] text-[var(--color-hobby)] hover:bg-[var(--color-hobby-dim)] transition-colors">
-          {tr.hobby.blogButton}
-        </a>
+      <div class="flex flex-col md:flex-row md:items-start gap-8">
+        <div class="flex-1">
+          <p class="font-mono text-sm text-[var(--color-hobby)] mb-4 tracking-widest relative z-10">HOBBY://about</p>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 relative z-10">
+            Pinball &amp;<br/>
+            <span style="color: var(--color-hobby)" class="glow-hobby">Retro Stuff</span>
+          </h1>
+          <div class="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl leading-relaxed prose prose-invert"><AboutContent /></div>
+          <div class="flex flex-wrap gap-3">
+            <a href={`${base}/hobby/projects`} class="px-4 py-2 rounded-lg font-mono text-sm font-bold text-[var(--color-bg)] bg-[var(--color-hobby)] hover:opacity-90 transition-opacity">
+              {tr.hobby.projectsButton}
+            </a>
+            <a href={`${base}/hobby/blog`} class="px-4 py-2 rounded-lg font-mono text-sm border border-[var(--color-hobby)] text-[var(--color-hobby)] hover:bg-[var(--color-hobby-dim)] transition-colors">
+              {tr.hobby.blogButton}
+            </a>
+          </div>
+        </div>
+        <div class="shrink-0 md:mt-10">
+          <LightboxImage
+            src="/images/hobby/about_picture.jpg"
+            alt="Stern Metallica Remastered LE"
+            caption="Myself and a brand new Stern Metallica Remastered LE"
+            imgClass="w-48 md:w-56 rounded-lg border border-[var(--color-hobby)] object-cover"
+          />
+        </div>
       </div>
     </div>
 
