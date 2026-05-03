@@ -86,6 +86,57 @@ const currentPath = Astro.url.pathname;
         {tr.common.switchLang}
       </a>
       <ThemeToggle />
+      <!-- Hamburger (mobile only) -->
+      <button
+        id="nav-toggle"
+        class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] transition-colors cursor-pointer"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      >
+        <span class="nav-open-icon text-base leading-none">☰</span>
+        <span class="nav-close-icon text-base leading-none hidden">✕</span>
+      </button>
     </div>
   </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-[var(--color-border)] px-4 py-3">
+    <nav class="flex flex-col gap-1">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class="px-3 py-2 text-sm rounded-md transition-colors"
+          style={currentPath === item.href
+            ? `color: ${accentColor}; background: ${section === 'hobby' ? 'var(--color-hobby-dim)' : 'var(--color-pro-dim)'}`
+            : 'color: var(--color-text-muted)'}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
 </header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle')!;
+  const menu = document.getElementById('mobile-menu')!;
+  const openIcon = toggle.querySelector('.nav-open-icon') as HTMLElement;
+  const closeIcon = toggle.querySelector('.nav-close-icon') as HTMLElement;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = !menu.classList.contains('hidden');
+    menu.classList.toggle('hidden', isOpen);
+    openIcon.classList.toggle('hidden', !isOpen);
+    closeIcon.classList.toggle('hidden', isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      openIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
