@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import IguanaLogo from './IguanaLogo.astro';
 import { t, getLang, getLocalePath, type Lang } from '../i18n';
 
 interface Props {
@@ -26,6 +27,7 @@ const hobbyNav = [
   { label: tr.nav.about, href: getLocalePath(lang, '/hobby') },
   { label: tr.nav.projects, href: getLocalePath(lang, '/hobby/projects') },
   { label: tr.nav.blog, href: getLocalePath(lang, '/hobby/blog') },
+  { label: tr.nav.contact, href: getLocalePath(lang, '/hobby/contact') },
 ];
 
 const navItems = section === 'hobby' ? hobbyNav : proNav;
@@ -38,8 +40,11 @@ const currentPath = Astro.url.pathname;
   <div class="max-w-6xl mx-auto px-4 h-14 flex items-center gap-4">
 
     <!-- Logo / name -->
-    <a href={getLocalePath(lang, '/')} class="font-mono font-bold text-sm shrink-0 hover:opacity-80 transition-opacity">
-      <span style={`color: var(--color-pro)`}>MS</span><span class="text-[var(--color-text-muted)]">://</span>
+    <a href={getLocalePath(lang, '/')} class="shrink-0 flex items-center gap-1 hover:opacity-80 transition-opacity" aria-label="Home">
+      <span style={`color: ${accentColor}; filter: drop-shadow(0 0 6px ${section === 'hobby' ? 'var(--color-hobby-glow)' : 'var(--color-pro-glow)'});`}>
+        <IguanaLogo height={30} />
+      </span>
+      <span class="font-mono font-bold text-sm text-[var(--color-text-muted)]">://</span>
     </a>
 
     <!-- Section switcher -->

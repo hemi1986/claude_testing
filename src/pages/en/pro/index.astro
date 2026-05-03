@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { getLang, t, getLocalePath, type Lang } from '@i18n';
-import { getBlogPosts, getProjects } from '@content/utils';
+import { getBlogPosts, getProjects, getProAbout } from '@content/utils';
+import { render } from 'astro:content';
 
 const lang = getLang(Astro.url) as Lang;
 const tr = t(lang);
 const base = getLocalePath(lang, '');
+const about = await getProAbout(lang);
+const { Content: AboutContent } = await render(about);
 
 const recentPosts = (await getBlogPosts('pro', lang))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -22,7 +25,7 @@ const recentProjects = (await getProjects('pro', lang))
     <div class="mb-16">
       <p class="font-mono text-sm text-[var(--color-pro)] mb-4 tracking-widest">PRO://about</p>
       <h1 class="text-4xl md:text-5xl font-bold mb-6">Michael Schempp</h1>
-      <p class="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl leading-relaxed">{tr.pro.heroBio}</p>
+      <div class="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl leading-relaxed prose prose-invert"><AboutContent /></div>
       <div class="flex flex-wrap gap-3">
         <a href={`${base}/pro/cv`} class="px-4 py-2 rounded-lg font-mono text-sm font-bold text-[var(--color-bg)] bg-[var(--color-pro)] hover:opacity-90 transition-opacity">
           {tr.pro.cvButton}
@@ -36,7 +39,7 @@ const recentProjects = (await getProjects('pro', lang))
     <div class="mb-16">
       <h2 class="font-mono text-xs text-[var(--color-text-muted)] tracking-widest uppercase mb-6">{tr.pro.expertiseTitle}</h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {tr.pro.skills.map(skill => (
+        {about.data.skills.map(skill => (
           <div class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)]">
             <div class="font-semibold text-sm mb-1">{skill.label}</div>
             <div class="text-xs text-[var(--color-text-muted)]">{skill.sub}</div>

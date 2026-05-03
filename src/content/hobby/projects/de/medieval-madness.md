@@ -3,7 +3,7 @@ title: "Medieval Madness (Williams, 1997)"
 description: "Vollständige Restaurierung eines Medieval Madness — Platinen, Spielfeld, Ramps, LED-Umbau."
 date: 2024-11-01
 tags: ["Pinball", "Williams", "WPC", "LED-Mod", "Restaurierung"]
-status: wip
+status: ongoing
 ---
 
 ## Über die Maschine

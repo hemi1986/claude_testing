@@ -3,7 +3,7 @@ title: "Interne Software-Plattform Europa-Park"
 description: "Aufbau und Leitung der internen Software-Entwicklungsabteilung und einer Cloud-nativen Entwicklungsplattform."
 date: 2023-06-01
 tags: ["Platform Engineering", "Cloud Native", "Leadership", "Kotlin", "Kubernetes"]
-status: active
+status: ongoing
 ---
 
 ## Kontext

@@ -15,10 +15,33 @@ const projectSchema = z.object({
   description: z.string(),
   date: z.coerce.date(),
   tags: z.array(z.string()).default([]),
-  status: z.enum(['active', 'completed', 'wip']).default('completed'),
+  status: z.enum(['ongoing', 'completed']).default('completed'),
   cover: z.string().optional(),
   link: z.string().optional(),
   draft: z.boolean().default(false),
+});
+
+const cvSchema = z.object({
+  subtitle: z.string(),
+  experience: z.array(z.object({
+    role: z.string(),
+    company: z.string(),
+    period: z.string(),
+    description: z.string(),
+    tags: z.array(z.string()),
+  })),
+  skills: z.array(z.object({
+    category: z.string(),
+    items: z.string(),
+  })),
+});
+
+const proAboutSchema = z.object({
+  skills: z.array(z.object({ label: z.string(), sub: z.string() })),
+});
+
+const hobbyAboutSchema = z.object({
+  activities: z.array(z.object({ icon: z.string(), label: z.string(), sub: z.string() })),
 });
 
 const blog = (base: string) =>
@@ -26,6 +49,9 @@ const blog = (base: string) =>
 
 const projects = (base: string) =>
   defineCollection({ loader: glob({ pattern: '*.md', base }), schema: projectSchema });
+
+const about = (base: string, schema: typeof proAboutSchema | typeof hobbyAboutSchema) =>
+  defineCollection({ loader: glob({ pattern: '*.md', base }), schema });
 
 export const collections = {
   'pro-blog-de':      blog('./src/content/pro/blog/de'),
@@ -36,4 +62,10 @@ export const collections = {
   'hobby-blog-en':    blog('./src/content/hobby/blog/en'),
   'hobby-projects-de': projects('./src/content/hobby/projects/de'),
   'hobby-projects-en': projects('./src/content/hobby/projects/en'),
+  'pro-about-de':     about('./src/content/pro/about/de', proAboutSchema),
+  'pro-about-en':     about('./src/content/pro/about/en', proAboutSchema),
+  'hobby-about-de':   about('./src/content/hobby/about/de', hobbyAboutSchema),
+  'hobby-about-en':   about('./src/content/hobby/about/en', hobbyAboutSchema),
+  'pro-cv-de':        defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/pro/cv/de' }), schema: cvSchema }),
+  'pro-cv-en':        defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/pro/cv/en' }), schema: cvSchema }),
 };

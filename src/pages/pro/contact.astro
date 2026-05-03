@@ -7,7 +7,7 @@ const tr = t(lang);
 ---
 
 <BaseLayout title={tr.pro.contactTitle} section="pro">
-  <div class="max-w-2xl mx-auto px-4 py-16">
+  <div class="max-w-4xl mx-auto px-4 py-16">
 
     <div class="mb-12">
       <p class="font-mono text-sm text-[var(--color-pro)] mb-4 tracking-widest">PRO://contact</p>
@@ -15,7 +15,7 @@ const tr = t(lang);
       <p class="text-[var(--color-text-muted)]">{tr.pro.contactDesc}</p>
     </div>
 
-    <div class="grid gap-4 mb-12">
+    <div class="grid gap-4">
       {[
         { label: 'Email', value: 'hallo@michaelschempp.de', href: 'mailto:hallo@michaelschempp.de', icon: '✉️' },
         { label: 'LinkedIn', value: 'linkedin.com/in/michaelschempp', href: '#', icon: '💼' },
@@ -30,24 +30,6 @@ const tr = t(lang);
         </a>
       ))}
     </div>
-
-    <form class="space-y-4" name="contact" method="POST">
-      <div>
-        <label class="font-mono text-xs text-[var(--color-text-muted)] block mb-2">{tr.pro.contactFormName}</label>
-        <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] text-[var(--color-text)] focus:outline-none focus:border-[var(--color-pro)] transition-colors" />
-      </div>
-      <div>
-        <label class="font-mono text-xs text-[var(--color-text-muted)] block mb-2">{tr.pro.contactFormEmail}</label>
-        <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] text-[var(--color-text)] focus:outline-none focus:border-[var(--color-pro)] transition-colors" />
-      </div>
-      <div>
-        <label class="font-mono text-xs text-[var(--color-text-muted)] block mb-2">{tr.pro.contactFormMessage}</label>
-        <textarea name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] text-[var(--color-text)] focus:outline-none focus:border-[var(--color-pro)] transition-colors resize-none"></textarea>
-      </div>
-      <button type="submit" class="w-full py-3 rounded-lg font-mono font-bold text-sm text-[var(--color-bg)] bg-[var(--color-pro)] hover:opacity-90 transition-opacity">
-        {tr.pro.contactFormSend}
-      </button>
-    </form>
 
   </div>
 </BaseLayout>

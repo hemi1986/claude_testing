@@ -4,6 +4,10 @@ import type { Lang } from '../i18n';
 type Section = 'pro' | 'hobby';
 type ContentType = 'blog' | 'projects';
 
+type ProAboutEntry = CollectionEntry<'pro-about-de'>;
+type HobbyAboutEntry = CollectionEntry<'hobby-about-de'>;
+type CvEntry = CollectionEntry<'pro-cv-de'>;
+
 type BlogEntry = CollectionEntry<'pro-blog-de'>;
 type ProjectEntry = CollectionEntry<'pro-projects-de'>;
 
@@ -58,6 +62,33 @@ export async function getProjectBySlug(section: Section, slug: string, lang: Lan
   }
   const deEntries = await safeGetCollection(`${section}-projects-de`) as ProjectEntry[];
   return deEntries.find(e => e.id === slug);
+}
+
+export async function getProAbout(lang: Lang): Promise<ProAboutEntry> {
+  if (lang === 'en') {
+    const en = await safeGetCollection('pro-about-en') as ProAboutEntry[];
+    if (en.length > 0) return en[0];
+  }
+  const de = await safeGetCollection('pro-about-de') as ProAboutEntry[];
+  return de[0];
+}
+
+export async function getHobbyAbout(lang: Lang): Promise<HobbyAboutEntry> {
+  if (lang === 'en') {
+    const en = await safeGetCollection('hobby-about-en') as HobbyAboutEntry[];
+    if (en.length > 0) return en[0];
+  }
+  const de = await safeGetCollection('hobby-about-de') as HobbyAboutEntry[];
+  return de[0];
+}
+
+export async function getCV(lang: Lang): Promise<CvEntry> {
+  if (lang === 'en') {
+    const en = await safeGetCollection('pro-cv-en') as CvEntry[];
+    if (en.length > 0) return en[0];
+  }
+  const de = await safeGetCollection('pro-cv-de') as CvEntry[];
+  return de[0];
 }
 
 /** All slugs from the de collection — used by getStaticPaths to ensure all routes exist. */
