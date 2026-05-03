@@ -1,0 +1,98 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLang, t, getLocalePath, type Lang } from '@i18n';
+import { getBlogPosts, getProjects } from '@content/utils';
+
+const lang = getLang(Astro.url) as Lang;
+const tr = t(lang);
+const base = getLocalePath(lang, '');
+
+const recentPosts = (await getBlogPosts('hobby', lang))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+const recentProjects = (await getProjects('hobby', lang))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout title={tr.hobby.pageTitle} section="hobby">
+  <div class="max-w-4xl mx-auto px-4 py-16">
+
+    <div class="mb-16 relative">
+      <div class="absolute -top-4 -left-2 font-mono text-6xl opacity-5 select-none pointer-events-none">████████</div>
+      <p class="font-mono text-sm text-[var(--color-hobby)] mb-4 tracking-widest relative z-10">PLAY://about</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 relative z-10">
+        Pinball &amp;<br/>
+        <span style="color: var(--color-hobby)" class="glow-hobby">Retro Stuff</span>
+      </h1>
+      <p class="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl leading-relaxed">{tr.hobby.heroBio}</p>
+      <div class="flex flex-wrap gap-3">
+        <a href={`${base}/hobby/projects`} class="px-4 py-2 rounded-lg font-mono text-sm font-bold text-[var(--color-bg)] bg-[var(--color-hobby)] hover:opacity-90 transition-opacity">
+          {tr.hobby.projectsButton}
+        </a>
+        <a href={`${base}/hobby/blog`} class="px-4 py-2 rounded-lg font-mono text-sm border border-[var(--color-hobby)] text-[var(--color-hobby)] hover:bg-[var(--color-hobby-dim)] transition-colors">
+          {tr.hobby.blogButton}
+        </a>
+      </div>
+    </div>
+
+    <div class="mb-16">
+      <h2 class="font-mono text-xs text-[var(--color-text-muted)] tracking-widest uppercase mb-6">{tr.hobby.whatIDoTitle}</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {tr.hobby.whatIDo.map(item => (
+          <div class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-hobby)] transition-colors">
+            <div class="text-2xl mb-2">{item.icon}</div>
+            <div class="font-semibold text-sm mb-1">{item.label}</div>
+            <div class="text-xs text-[var(--color-text-muted)]">{item.sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {recentProjects.length > 0 && (
+      <div class="mb-16">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-mono text-xs text-[var(--color-text-muted)] tracking-widest uppercase">{tr.hobby.recentProjectsTitle}</h2>
+          <a href={`${base}/hobby/projects`} class="font-mono text-xs text-[var(--color-hobby)] hover:opacity-80">{tr.hobby.allLink}</a>
+        </div>
+        <div class="grid gap-4">
+          {recentProjects.map(project => (
+            <a href={`${base}/hobby/projects/${project.id}`} class="group p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-hobby)] transition-all">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 class="font-semibold group-hover:text-[var(--color-hobby)] transition-colors">{project.data.title}</h3>
+                  <p class="text-sm text-[var(--color-text-muted)] mt-1">{project.data.description}</p>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded shrink-0 bg-[var(--color-hobby-dim)] text-[var(--color-hobby)]">
+                  {tr.common.status[project.data.status]}
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {recentPosts.length > 0 && (
+      <div>
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-mono text-xs text-[var(--color-text-muted)] tracking-widest uppercase">{tr.hobby.recentPostsTitle}</h2>
+          <a href={`${base}/hobby/blog`} class="font-mono text-xs text-[var(--color-hobby)] hover:opacity-80">{tr.hobby.allLink}</a>
+        </div>
+        <div class="grid gap-4">
+          {recentPosts.map(post => (
+            <a href={`${base}/hobby/blog/${post.id}`} class="group p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-hobby)] transition-all">
+              <h3 class="font-semibold group-hover:text-[var(--color-hobby)] transition-colors">{post.data.title}</h3>
+              <p class="text-sm text-[var(--color-text-muted)] mt-1">{post.data.description}</p>
+              <p class="font-mono text-xs text-[var(--color-text-muted)] mt-2">
+                {post.data.date.toLocaleDateString(tr.common.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+  </div>
+</BaseLayout>

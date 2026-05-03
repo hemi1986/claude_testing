@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLang, t, getLocalePath, type Lang } from '@i18n';
+import { getBlogPosts } from '@content/utils';
+
+const lang = getLang(Astro.url) as Lang;
+const tr = t(lang);
+const base = getLocalePath(lang, '');
+
+const posts = (await getBlogPosts('hobby', lang))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title={tr.hobby.blogTitle} section="hobby">
+  <div class="max-w-3xl mx-auto px-4 py-16">
+
+    <div class="mb-12">
+      <p class="font-mono text-sm text-[var(--color-hobby)] mb-4 tracking-widest">PLAY://blog</p>
+      <h1 class="text-4xl font-bold mb-4">{tr.hobby.blogTitle}</h1>
+      <p class="text-[var(--color-text-muted)]">{tr.hobby.blogDesc}</p>
+    </div>
+
+    {posts.length === 0 ? (
+      <div class="text-center py-24 text-[var(--color-text-muted)]">
+        <p class="font-mono text-4xl mb-4 opacity-20">🎯</p>
+        <p>{tr.hobby.blogEmpty}</p>
+      </div>
+    ) : (
+      <div class="space-y-6">
+        {posts.map(post => (
+          <a href={`${base}/hobby/blog/${post.id}`} class="group block p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-hobby)] transition-all">
+            <p class="font-mono text-xs text-[var(--color-text-muted)] mb-2">
+              {post.data.date.toLocaleDateString(tr.common.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
+            <h2 class="text-xl font-bold mb-2 group-hover:text-[var(--color-hobby)] transition-colors">{post.data.title}</h2>
+            <p class="text-[var(--color-text-muted)] text-sm mb-4">{post.data.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {post.data.tags.map(tag => (
+                <span class="font-mono text-xs px-2 py-0.5 rounded bg-[var(--color-hobby-dim)] text-[var(--color-hobby)]">{tag}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>

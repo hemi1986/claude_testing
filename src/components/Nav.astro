@@ -1,0 +1,86 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { t, getLang, getLocalePath, type Lang } from '../i18n';
+
+interface Props {
+  section?: 'pro' | 'hobby';
+}
+
+const { section } = Astro.props;
+const lang = getLang(Astro.url) as Lang;
+const tr = t(lang);
+const otherLang = lang === 'de' ? 'en' : 'de';
+
+const proColor = section === 'pro' ? 'var(--color-pro)' : 'var(--color-text-muted)';
+const hobbyColor = section === 'hobby' ? 'var(--color-hobby)' : 'var(--color-text-muted)';
+
+const proNav = [
+  { label: tr.nav.about, href: getLocalePath(lang, '/pro') },
+  { label: tr.nav.projects, href: getLocalePath(lang, '/pro/projects') },
+  { label: tr.nav.blog, href: getLocalePath(lang, '/pro/blog') },
+  { label: tr.nav.cv, href: getLocalePath(lang, '/pro/cv') },
+  { label: tr.nav.contact, href: getLocalePath(lang, '/pro/contact') },
+];
+
+const hobbyNav = [
+  { label: tr.nav.about, href: getLocalePath(lang, '/hobby') },
+  { label: tr.nav.projects, href: getLocalePath(lang, '/hobby/projects') },
+  { label: tr.nav.blog, href: getLocalePath(lang, '/hobby/blog') },
+];
+
+const navItems = section === 'hobby' ? hobbyNav : proNav;
+const accentColor = section === 'hobby' ? 'var(--color-hobby)' : 'var(--color-pro)';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/90 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-4 h-14 flex items-center gap-4">
+
+    <!-- Logo / name -->
+    <a href={getLocalePath(lang, '/')} class="font-mono font-bold text-sm shrink-0 hover:opacity-80 transition-opacity">
+      <span style={`color: var(--color-pro)`}>MS</span><span class="text-[var(--color-text-muted)]">://</span>
+    </a>
+
+    <!-- Section switcher -->
+    <div class="flex items-center gap-1 text-xs font-mono border border-[var(--color-border)] rounded-md overflow-hidden shrink-0">
+      <a
+        href={getLocalePath(lang, '/pro')}
+        class="px-3 py-1.5 transition-colors"
+        style={section === 'pro' ? `background: var(--color-pro-dim); color: var(--color-pro)` : `color: var(--color-text-muted)`}
+      >{tr.nav.pro}</a>
+      <span class="w-px h-4 bg-[var(--color-border)]"></span>
+      <a
+        href={getLocalePath(lang, '/hobby')}
+        class="px-3 py-1.5 transition-colors"
+        style={section === 'hobby' ? `background: var(--color-hobby-dim); color: var(--color-hobby)` : `color: var(--color-text-muted)`}
+      >{tr.nav.hobby}</a>
+    </div>
+
+    <!-- Section nav -->
+    <nav class="hidden md:flex items-center gap-1 flex-1">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class="px-3 py-1.5 text-sm rounded-md transition-colors"
+          style={currentPath === item.href
+            ? `color: ${accentColor}; background: ${section === 'hobby' ? 'var(--color-hobby-dim)' : 'var(--color-pro-dim)'}`
+            : 'color: var(--color-text-muted)'}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="ml-auto flex items-center gap-2">
+      <!-- Language switcher -->
+      <a
+        href={otherLang === 'de' ? Astro.url.pathname.replace(/^\/en/, '') || '/' : `/en${Astro.url.pathname}`}
+        class="font-mono text-xs px-2 py-1 rounded border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+      >
+        {tr.common.switchLang}
+      </a>
+      <ThemeToggle />
+    </div>
+  </div>
+</header>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLang, t, getLocalePath, type Lang } from '@i18n';
+
+const lang = getLang(Astro.url) as Lang;
+const tr = t(lang);
+const [proTitle, proSub] = tr.home.proCardTitle.split('\n');
+const [hobbyTitle, hobbySub] = tr.home.hobbyCardTitle.split('\n');
+---
+
+<BaseLayout title="Home">
+  <section class="min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center px-4 py-16 text-center relative overflow-hidden">
+
+    <div class="absolute inset-0 opacity-5"
+      style="background-image: linear-gradient(var(--color-text) 1px, transparent 1px), linear-gradient(90deg, var(--color-text) 1px, transparent 1px); background-size: 40px 40px;">
+    </div>
+
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <p class="font-mono text-sm text-[var(--color-text-muted)] mb-4 tracking-widest uppercase">{tr.home.greeting}</p>
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+        Michael<br/>
+        <span style="color: var(--color-pro)" class="glow-pro">Schempp</span>
+      </h1>
+      <p class="text-lg text-[var(--color-text-muted)] mb-16 max-w-xl mx-auto leading-relaxed">
+        {tr.home.tagline.split('\n').map((line, i) => (
+          <>{line}{i === 0 && <br/>}</>
+        ))}
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 text-left">
+
+        <a href={getLocalePath(lang, '/pro')} class="group block p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-pro)] transition-all duration-300 hover:shadow-[0_0_30px_var(--color-pro-dim)]">
+          <div class="font-mono text-xs text-[var(--color-pro)] mb-3 tracking-widest">PRO://</div>
+          <h2 class="text-xl font-bold mb-2 group-hover:text-[var(--color-pro)] transition-colors">
+            {proTitle}<br/>&amp;{proSub}
+          </h2>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">{tr.home.proCardDesc}</p>
+          <div class="flex flex-wrap gap-2">
+            {['Architecture', 'Cloud Native', 'Leadership', 'Distributed Systems'].map(tag => (
+              <span class="font-mono text-xs px-2 py-0.5 rounded bg-[var(--color-pro-dim)] text-[var(--color-pro)]">{tag}</span>
+            ))}
+          </div>
+          <div class="mt-4 font-mono text-xs text-[var(--color-pro)] opacity-60 group-hover:opacity-100 transition-opacity">
+            {tr.home.enter}
+          </div>
+        </a>
+
+        <a href={getLocalePath(lang, '/hobby')} class="group block p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-hobby)] transition-all duration-300 hover:shadow-[0_0_30px_var(--color-hobby-dim)]">
+          <div class="font-mono text-xs text-[var(--color-hobby)] mb-3 tracking-widest">PLAY://</div>
+          <h2 class="text-xl font-bold mb-2 group-hover:text-[var(--color-hobby)] transition-colors">
+            {hobbyTitle}<br/>&amp;{hobbySub}
+          </h2>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">{tr.home.hobbyCardDesc}</p>
+          <div class="flex flex-wrap gap-2">
+            {['Pinball', 'Arcade', 'Retro', 'Restore'].map(tag => (
+              <span class="font-mono text-xs px-2 py-0.5 rounded bg-[var(--color-hobby-dim)] text-[var(--color-hobby)]">{tag}</span>
+            ))}
+          </div>
+          <div class="mt-4 font-mono text-xs text-[var(--color-hobby)] opacity-60 group-hover:opacity-100 transition-opacity">
+            {tr.home.enter}
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

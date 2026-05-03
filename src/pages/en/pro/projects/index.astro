@@ -1,0 +1,49 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLang, t, getLocalePath, type Lang } from '@i18n';
+import { getProjects } from '@content/utils';
+
+const lang = getLang(Astro.url) as Lang;
+const tr = t(lang);
+const base = getLocalePath(lang, '');
+
+const projects = (await getProjects('pro', lang))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title={tr.pro.projectsTitle} section="pro">
+  <div class="max-w-4xl mx-auto px-4 py-16">
+
+    <div class="mb-12">
+      <p class="font-mono text-sm text-[var(--color-pro)] mb-4 tracking-widest">PRO://projects</p>
+      <h1 class="text-4xl font-bold mb-4">{tr.pro.projectsTitle}</h1>
+      <p class="text-[var(--color-text-muted)]">{tr.pro.projectsDesc}</p>
+    </div>
+
+    {projects.length === 0 ? (
+      <div class="text-center py-24 text-[var(--color-text-muted)]">
+        <p class="font-mono text-4xl mb-4 opacity-20">[ ]</p>
+        <p>{tr.pro.projectsEmpty}</p>
+      </div>
+    ) : (
+      <div class="grid gap-6">
+        {projects.map(project => (
+          <a href={`${base}/pro/projects/${project.id}`} class="group block p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-pro)] transition-all hover:shadow-[0_0_20px_var(--color-pro-dim)]">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h2 class="text-xl font-bold group-hover:text-[var(--color-pro)] transition-colors">{project.data.title}</h2>
+              <span class="font-mono text-xs px-2 py-1 rounded border border-[var(--color-border)] text-[var(--color-text-muted)] shrink-0">
+                {tr.common.status[project.data.status]}
+              </span>
+            </div>
+            <p class="text-[var(--color-text-muted)] mb-4 leading-relaxed">{project.data.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {project.data.tags.map(tag => (
+                <span class="font-mono text-xs px-2 py-0.5 rounded bg-[var(--color-pro-dim)] text-[var(--color-pro)]">{tag}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>

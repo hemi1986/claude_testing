@@ -1,0 +1,93 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLang, t, getLocalePath, type Lang } from '@i18n';
+import { getBlogPosts, getProjects } from '@content/utils';
+
+const lang = getLang(Astro.url) as Lang;
+const tr = t(lang);
+const base = getLocalePath(lang, '');
+
+const recentPosts = (await getBlogPosts('pro', lang))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+const recentProjects = (await getProjects('pro', lang))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout title={tr.pro.pageTitle} section="pro">
+  <div class="max-w-4xl mx-auto px-4 py-16">
+
+    <div class="mb-16">
+      <p class="font-mono text-sm text-[var(--color-pro)] mb-4 tracking-widest">PRO://about</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Michael Schempp</h1>
+      <p class="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl leading-relaxed">{tr.pro.heroBio}</p>
+      <div class="flex flex-wrap gap-3">
+        <a href={`${base}/pro/cv`} class="px-4 py-2 rounded-lg font-mono text-sm font-bold text-[var(--color-bg)] bg-[var(--color-pro)] hover:opacity-90 transition-opacity">
+          {tr.pro.cvButton}
+        </a>
+        <a href={`${base}/pro/contact`} class="px-4 py-2 rounded-lg font-mono text-sm border border-[var(--color-pro)] text-[var(--color-pro)] hover:bg-[var(--color-pro-dim)] transition-colors">
+          {tr.pro.contactButton}
+        </a>
+      </div>
+    </div>
+
+    <div class="mb-16">
+      <h2 class="font-mono text-xs text-[var(--color-text-muted)] tracking-widest uppercase mb-6">{tr.pro.expertiseTitle}</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {tr.pro.skills.map(skill => (
+          <div class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)]">
+            <div class="font-semibold text-sm mb-1">{skill.label}</div>
+            <div class="text-xs text-[var(--color-text-muted)]">{skill.sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {recentProjects.length > 0 && (
+      <div class="mb-16">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-mono text-xs text-[var(--color-text-muted)] tracking-widest uppercase">{tr.pro.recentProjectsTitle}</h2>
+          <a href={`${base}/pro/projects`} class="font-mono text-xs text-[var(--color-pro)] hover:opacity-80">{tr.pro.allLink}</a>
+        </div>
+        <div class="grid gap-4">
+          {recentProjects.map(project => (
+            <a href={`${base}/pro/projects/${project.id}`} class="group p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-pro)] transition-all">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 class="font-semibold group-hover:text-[var(--color-pro)] transition-colors">{project.data.title}</h3>
+                  <p class="text-sm text-[var(--color-text-muted)] mt-1">{project.data.description}</p>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded shrink-0 bg-[var(--color-pro-dim)] text-[var(--color-pro)]">
+                  {tr.common.status[project.data.status]}
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {recentPosts.length > 0 && (
+      <div>
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-mono text-xs text-[var(--color-text-muted)] tracking-widest uppercase">{tr.pro.recentPostsTitle}</h2>
+          <a href={`${base}/pro/blog`} class="font-mono text-xs text-[var(--color-pro)] hover:opacity-80">{tr.pro.allLink}</a>
+        </div>
+        <div class="grid gap-4">
+          {recentPosts.map(post => (
+            <a href={`${base}/pro/blog/${post.id}`} class="group p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-pro)] transition-all">
+              <h3 class="font-semibold group-hover:text-[var(--color-pro)] transition-colors">{post.data.title}</h3>
+              <p class="text-sm text-[var(--color-text-muted)] mt-1">{post.data.description}</p>
+              <p class="font-mono text-xs text-[var(--color-text-muted)] mt-2">
+                {post.data.date.toLocaleDateString(tr.common.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+  </div>
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+---
+<button
+  id="theme-toggle"
+  aria-label="Toggle dark/light mode"
+  class="w-9 h-9 flex items-center justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-pro)] transition-colors cursor-pointer"
+>
+  <span class="dark-icon text-lg">☀️</span>
+  <span class="light-icon text-lg hidden">🌙</span>
+</button>
+
+<script>
+  const btn = document.getElementById('theme-toggle')!;
+  const darkIcon = btn.querySelector('.dark-icon') as HTMLElement;
+  const lightIcon = btn.querySelector('.light-icon') as HTMLElement;
+
+  function applyTheme(theme: string) {
+    if (theme === 'light') {
+      document.documentElement.classList.add('light');
+      darkIcon.classList.add('hidden');
+      lightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('light');
+      darkIcon.classList.remove('hidden');
+      lightIcon.classList.add('hidden');
+    }
+  }
+
+  const saved = localStorage.getItem('theme') ?? 'dark';
+  applyTheme(saved);
+
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.classList.contains('light') ? 'light' : 'dark';
+    const next = current === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', next);
+    applyTheme(next);
+  });
+</script>
