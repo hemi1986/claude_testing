@@ -36,6 +36,7 @@ export default {
     cvPdfLink: 'Kontakt aufnehmen',
     cvExperienceTitle: 'Berufserfahrung',
     cvSkillsTitle: 'Skills',
+    cvEducationTitle: 'Ausbildung & Zertifikate',
     contactTitle: 'Kontakt',
     contactDesc: 'Interesse an einer Zusammenarbeit oder einem Gespräch? Hier findest du mich.',
     aboutTitle: 'Über mich',

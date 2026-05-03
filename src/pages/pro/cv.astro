@@ -40,7 +40,11 @@ const cv = await getCV(lang);
                 {job.period}
               </span>
             </div>
-            <p class="text-sm text-[var(--color-text-muted)] mb-3 leading-relaxed">{job.description}</p>
+            <div class="text-sm text-[var(--color-text-muted)] mb-3 space-y-3">
+              {job.description.split('\n\n').map(para => (
+                <p class="leading-relaxed">{para}</p>
+              ))}
+            </div>
             <div class="flex flex-wrap gap-2">
               {job.tags.map(tag => (
                 <span class="font-mono text-xs px-2 py-0.5 rounded bg-[var(--color-pro-dim)] text-[var(--color-pro)]">{tag}</span>
@@ -62,6 +66,25 @@ const cv = await getCV(lang);
         ))}
       </div>
     </section>
+
+    {cv.data.education && cv.data.education.length > 0 && (
+      <section class="mb-12">
+        <h2 class="font-mono text-xs text-[var(--color-text-muted)] tracking-widest uppercase mb-6">{tr.pro.cvEducationTitle}</h2>
+        <div class="space-y-3">
+          {cv.data.education.map(item => (
+            <div class="flex flex-wrap items-baseline justify-between gap-2 py-2 border-b border-[var(--color-border)] last:border-0">
+              <div>
+                <span class="text-sm font-medium">{item.degree}</span>
+                <span class="text-sm text-[var(--color-text-muted)] ml-2">— {item.institution}</span>
+              </div>
+              {item.year && (
+                <span class="font-mono text-xs text-[var(--color-text-muted)]">{item.year}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 
   </div>
 </BaseLayout>

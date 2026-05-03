@@ -3,15 +3,13 @@ skills:
   - label: Software Architecture
     sub: Distributed & Cloud Native
   - label: Engineering Leadership
-    sub: Teams, Culture, Delivery
+    sub: Building teams, culture, delivery
   - label: Platform Engineering
-    sub: Infra, CI/CD, DevOps
+    sub: Kubernetes, GCP, Terraform
   - label: Backend Development
-    sub: APIs, Microservices
-  - label: System Design
-    sub: Scalability & Reliability
-  - label: Consulting
-    sub: Strategy & Transformation
+    sub: Kotlin, TypeScript, Nest.js
+  - label: DevSecOps
+    sub: CI/CD, CIAM, Observability
 ---
 
-Software Architect & Engineering Lead. I build distributed systems, cloud-native platforms and the teams that develop them.
+I build things that should exist but don't yet — platforms, teams, processes. Since 2020 I've been doing this at Europa-Park, where I built an internal software development department from scratch.

@@ -34,6 +34,11 @@ const cvSchema = z.object({
     category: z.string(),
     items: z.string(),
   })),
+  education: z.array(z.object({
+    degree: z.string(),
+    institution: z.string(),
+    year: z.string().optional(),
+  })).optional(),
 });
 
 const proAboutSchema = z.object({
