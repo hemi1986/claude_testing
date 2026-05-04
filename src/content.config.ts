@@ -51,10 +51,10 @@ const hobbyAboutSchema = z.object({
 });
 
 const blog = (base: string) =>
-  defineCollection({ loader: glob({ pattern: '*.md', base }), schema: blogSchema });
+  defineCollection({ loader: glob({ pattern: '*.{md,mdx}', base }), schema: blogSchema });
 
 const projects = (base: string) =>
-  defineCollection({ loader: glob({ pattern: '*.md', base }), schema: projectSchema });
+  defineCollection({ loader: glob({ pattern: '*.{md,mdx}', base }), schema: projectSchema });
 
 export const collections = {
   'pro-blog-de':       blog('./src/content/pro/blog/de'),

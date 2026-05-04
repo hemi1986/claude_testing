@@ -1,0 +1,83 @@
+---
+title: "The Addams Family Restaurierung — von Keller zu Klassiker"
+description: "Wie ich einen Bally Addams Family von 1992 aus einem feuchten Keller gerettet, komplett restauriert und zum Laufen gebracht habe."
+date: 2025-03-15
+tags: ["Pinball", "Addams Family", "Bally", "WPC", "Restaurierung", "LED-Mod"]
+---
+
+import LightboxImage from '@components/LightboxImage.astro';
+
+The Addams Family von Bally (1992) ist der meistverkaufte Flipperautomat aller Zeiten — über 20.000 Stück weltweit. Als mir ein Bekannter erzählte, dass sein Exemplar seit Jahren im Keller stand und „vielleicht noch angeht", musste ich einfach nachsehen.
+
+<div class="not-prose my-8 flex flex-wrap gap-6 items-start">
+  <LightboxImage
+    src="/images/hobby/about_picture.jpg"
+    alt="Der Addams Family im Ausgangszustand"
+    caption="Erster Eindruck: 15 Jahre Keller-Patina"
+    imgClass="w-full rounded-lg border border-[var(--color-hobby)] object-cover"
+  />
+</div>
+
+## Ausgangszustand
+
+Spoiler: Er ging nicht mehr an. Was mich erwartete:
+
+- **Spielfeld:** Jahrzehnte-Dreck, mehrere Kratzer, ein gerissenes Playfield-Insert
+- **Hauptplatine (MPU):** Battery-Leak — der Klassiker. Komplette Korrosion um den Batteriehalter
+- **Flipper-Mechanik:** Beide Flipper ausgeschlagen, Spulen überaltert
+- **Lautsprecher:** Membranen porös, Surroundring aufgelöst
+- **GI-Beleuchtung:** Geschätzte 40 % der Sockeln ausgebrannt oder gebrochen
+
+Der Vorbesitzer hatte irgendwann versucht, den Battery-Leak mit Heißkleber zu „reparieren". Das half nicht.
+
+## Schritt 1: Board-Restaurierung
+
+Der schlimmste Teil zuerst: die MPU. Bally WPC-Boards aus dieser Ära leiden systematisch unter den eingelöteten Varta-Batterien, die irgendwann auslaufen und die Leiterbahnen zerfressen.
+
+Vorgehensweise:
+1. Alle beschädigten Bauteile auslöten und unter der Lupe kartieren
+2. Korrodierte Leiterbahnen freilegen, reinigen (Isopropanol + Zahnbürste), neu brücken
+3. Battery-Mod durchführen: externes AA-Batteriefach mit Diode — nie wieder eingelötete Batterien
+4. Alle Elkos präventiv tauschen (Recap)
+
+Nach zwei Abenden mit Lupe und Lötkolben: Board bootet. Das typische „WOOOO" des Addams-Family-Boots-Sounds kam aus dem (noch defekten) Lautsprecher — trotzdem ein kleines Fest.
+
+## Schritt 2: Spielfeld
+
+<div class="not-prose my-8 float-right ml-6">
+  <LightboxImage
+    src="/images/pro/about_picture.jpg"
+    alt="Spielfeld nach der Grundreinigung"
+    caption="Nach 4 Stunden Reinigung — das Holz kommt zum Vorschein"
+    imgClass="w-56 rounded-lg border border-[var(--color-hobby)] object-cover"
+  />
+</div>
+
+Spielfeld-Restaurierung ist Handarbeit und Geduld:
+
+- **Reinigung:** Novus 2 Poliermittel, im Uhrzeigersinn, immer in Faserrichtung des Holzlacks
+- **Insert-Reparatur:** Gerissenes Insert mit UV-Harz gefüllt und von unten beleuchtet ausgehärtet
+- **Mylar entfernen:** Den vergilbten Schutzfilm im Ballbereich vorsichtig mit Heißluft ablösen — die Kunst ist, den Lack darunter nicht mitzunehmen
+
+Das Ergebnis nach einem Wochenende: Das Spielfeld sieht aus wie neu. Okay, fast wie neu.
+
+## Schritt 3: LED-Umbau
+
+Die originale Glühlampen-Beleuchtung gehört ausgetauscht. Nicht aus Nostalgie-Verachtung, sondern weil defekte Sockets die Platine belasten und LEDs schlicht 30 Jahre länger halten.
+
+Für den Addams Family habe ich verwendet:
+- **GI (General Illumination):** Warm-weiße 6,3 V LEDs — kühle Weiß-LEDs wirken auf dem dunklen Spielfeld klinisch
+- **Inserts:** Farbige Single-Color-LEDs passend zur Insert-Farbe — kein RGB, das wirkt oft überdreht
+- **Flasher:** Original-kompatible LED-Flasher, gleiche Intensität wie Glühlampe
+
+Der größte Gewinn: Das Spielfeld atmet jetzt. Bei Glühlampen flackert die GI gleichmäßig träge; LEDs reagieren sofort und machen den Unterschied bei jedem Coil-Hit spürbar.
+
+## Ergebnis
+
+Nach sechs Wochen Wochenendarbeit läuft die Maschine besser als vermutlich je zuvor. Alle Schalter erkannt, alle Coils ansprechend, Sound klar und laut, Spielfeld glänzend.
+
+The Addams Family ist kein einfaches Spiel — aber sie ist jetzt spielbereit, und das ist die beste Belohnung.
+
+---
+
+*Nächster Eintrag: Flipper-Mechanik im Detail — Ausschlagen erkennen, tauschen, einstellen.*
