@@ -16,6 +16,29 @@ const [hobbyTitle, hobbySub] = tr.home.hobbyCardTitle.split('\n');
       style="background-image: linear-gradient(var(--color-text) 1px, transparent 1px), linear-gradient(90deg, var(--color-text) 1px, transparent 1px); background-size: 40px 40px;">
     </div>
 
+    <div class="absolute inset-0 -bottom-24 overflow-hidden pointer-events-none" aria-hidden="true">
+      <!-- horizontal streams: top = multiples of 40px, negative delays = already in motion on load -->
+      <div class="data-h" style="top:40px;  --sc:var(--color-pro);   animation-duration:4.2s; animation-delay:-1.8s"></div>
+      <div class="data-h" style="top:160px; --sc:var(--color-hobby); animation-duration:6.8s; animation-delay:-3.1s"></div>
+      <div class="data-h" style="top:280px; --sc:var(--color-pro);   animation-duration:5.1s; animation-delay:-0.9s"></div>
+      <div class="data-h" style="top:400px; --sc:var(--color-hobby); animation-duration:7.4s; animation-delay:-4.2s"></div>
+      <div class="data-h" style="top:520px; --sc:var(--color-pro);   animation-duration:4.9s; animation-delay:-2.3s"></div>
+      <div class="data-h" style="top:640px; --sc:var(--color-hobby); animation-duration:6.3s; animation-delay:-1.5s"></div>
+      <div class="data-h" style="top:760px; --sc:var(--color-pro);   animation-duration:5.7s; animation-delay:-3.8s"></div>
+      <div class="data-h" style="top:880px; --sc:var(--color-hobby); animation-duration:7.1s; animation-delay:-0.6s"></div>
+      <!-- vertical streams: left = multiples of 40px, spread to 1840px for wide screens -->
+      <div class="data-v" style="left:40px;   --sc:var(--color-hobby); animation-duration:5.3s; animation-delay:-2.1s"></div>
+      <div class="data-v" style="left:240px;  --sc:var(--color-pro);   animation-duration:8.1s; animation-delay:-4.5s"></div>
+      <div class="data-v" style="left:440px;  --sc:var(--color-hobby); animation-duration:6.2s; animation-delay:-1.3s"></div>
+      <div class="data-v" style="left:640px;  --sc:var(--color-pro);   animation-duration:9.0s; animation-delay:-3.7s"></div>
+      <div class="data-v" style="left:840px;  --sc:var(--color-hobby); animation-duration:7.3s; animation-delay:-5.1s"></div>
+      <div class="data-v" style="left:1040px; --sc:var(--color-pro);   animation-duration:5.8s; animation-delay:-2.6s"></div>
+      <div class="data-v" style="left:1240px; --sc:var(--color-hobby); animation-duration:8.6s; animation-delay:-0.8s"></div>
+      <div class="data-v" style="left:1440px; --sc:var(--color-pro);   animation-duration:6.7s; animation-delay:-4.2s"></div>
+      <div class="data-v" style="left:1640px; --sc:var(--color-hobby); animation-duration:7.9s; animation-delay:-1.9s"></div>
+      <div class="data-v" style="left:1840px; --sc:var(--color-pro);   animation-duration:5.5s; animation-delay:-3.3s"></div>
+    </div>
+
     <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 opacity-[0.07] select-none" style="color: var(--color-pro);">
         <IguanaLogo height={420} />
@@ -72,3 +95,38 @@ const [hobbyTitle, hobbySub] = tr.home.hobbyCardTitle.split('\n');
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  @keyframes data-h {
+    from { transform: translateX(-200px); }
+    to   { transform: translateX(calc(100vw + 200px)); }
+  }
+  @keyframes data-v {
+    from { transform: translateY(-200px); }
+    to   { transform: translateY(calc(100vh + 200px)); }
+  }
+
+  .data-h {
+    position: absolute;
+    left: 0;
+    width: 180px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--sc), transparent);
+    opacity: 0.4;
+    animation: data-h linear infinite;
+  }
+
+  .data-v {
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 180px;
+    background: linear-gradient(180deg, transparent, var(--sc), transparent);
+    opacity: 0.4;
+    animation: data-v linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .data-h, .data-v { animation: none; opacity: 0; }
+  }
+</style>
