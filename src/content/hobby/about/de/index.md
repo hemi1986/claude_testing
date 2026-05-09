@@ -1,23 +1,23 @@
 ---
 activities:
-  - icon: "🎯"
-    label: Pinball Repair
-    sub: Elektronik, Mechanik, Diagnostik
-  - icon: "🔧"
-    label: Restaurierung
-    sub: Vollständige Wiederherstellung
-  - icon: "🕹️"
-    label: Arcade
-    sub: MAME, Cocktail, Upright Cabs
-  - icon: "💡"
-    label: LED-Modding
-    sub: GI, Inserts, RGB-Steuerung
-  - icon: "🖥️"
-    label: Retro Gaming
-    sub: Konsolen, Computer, Handhelds
-  - icon: "🔬"
-    label: Diagnose
-    sub: Platinen, Netzteile, Displays
+  - icon: "⚡"
+    label: Flipperautomaten
+    sub: Reparatur, Restaurierung, Modding
+  - icon: "👾"
+    label: Arcade & Gaming
+    sub: MAME, Emulation, Custom Builds
+  - icon: "🖨️"
+    label: 3D-Druck
+    sub: CAD-Eigenkonstruktionen, Prototyping
+  - icon: "🛸"
+    label: FPV Drohnen
+    sub: Build, Mod, Fly
+  - icon: "⌨️"
+    label: Side-Quests (Dev)
+    sub: Private Coding, KI, Apps
+  - icon: "🏛️"
+    label: Flippermuseum
+    sub: Vereinsmitglied & Supporter
 ---
 
-Ich repariere, restauriere und erwecke Flipperautomaten und Arcade-Maschinen wieder zum Leben. Weil Hardware Spaß macht und alte Technik faszinierend ist.
+Mein Maker-Mindset macht nach Feierabend nicht Halt. Ich bin Nerd aus Überzeugung mit einem Faible für die Hacker- und Sci-Fi-Kultur: Ich rette tote Flipperautomaten vor dem Schrottplatz, konstruiere fehlende Mechanik-Teile direkt im CAD für den 3D-Drucker oder schraube an FPV-Drohnen. Für mich gibt es keine Blackboxen – wenn ein System blinkt, Code ausführt oder eine Mechanik hat, wird es zerlegt, verstanden und gemoddet.

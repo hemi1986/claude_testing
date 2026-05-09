@@ -1,23 +1,23 @@
 ---
 activities:
-  - icon: "🎯"
-    label: Pinball Repair
-    sub: Electronics, Mechanics, Diagnostics
-  - icon: "🔧"
-    label: Restoration
-    sub: Full end-to-end restoration
-  - icon: "🕹️"
-    label: Arcade
-    sub: MAME, Cocktail, Upright Cabs
-  - icon: "💡"
-    label: LED Modding
-    sub: GI, Inserts, RGB control
-  - icon: "🖥️"
-    label: Retro Gaming
-    sub: Consoles, Computers, Handhelds
-  - icon: "🔬"
-    label: Diagnostics
-    sub: Boards, PSUs, Displays
+  - icon: "⚡"
+    label: Pinball Machines
+    sub: Repair, Restoration, Modding
+  - icon: "👾"
+    label: Arcade & Gaming
+    sub: MAME, Emulation, Custom Builds
+  - icon: "🖨️"
+    label: 3D Printing
+    sub: Custom CAD Designs, Prototyping
+  - icon: "🛸"
+    label: FPV Drones
+    sub: Build, Mod, Fly
+  - icon: "⌨️"
+    label: Side Quests (Dev)
+    sub: Private Coding, AI, Apps
+  - icon: "🏛️"
+    label: Pinball Museum
+    sub: Club Member & Supporter
 ---
 
-I repair, restore and bring pinball machines and arcade cabinets back to life. Because hardware is fun and old technology is fascinating.
+My maker mindset doesn't stop when I clock out. I'm a nerd at heart with a passion for hacker and sci-fi culture: I save dead pinball machines from the junkyard, design missing mechanical parts directly in CAD for the 3D printer, or build and tune FPV drones. There are no black boxes for me—if a system blinks, executes code, or has moving parts, it gets taken apart, understood, and modded.
