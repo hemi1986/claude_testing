@@ -49,6 +49,20 @@ const recentProjects = (await getProjects('pro', lang))
       </div>
     </div>
 
+    {about.data.mindset && about.data.mindset.length > 0 && (
+      <div class="mb-16">
+        <h2 class="font-mono text-xs text-[var(--color-text-muted)] tracking-widest uppercase mb-6">{tr.pro.mindsetTitle}</h2>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {about.data.mindset.map(item => (
+            <div class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)]">
+              <div class="font-mono text-xs text-[var(--color-pro)] mb-2">{item.title}</div>
+              <div class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.description}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
     <div class="mb-16">
       <h2 class="font-mono text-xs text-[var(--color-text-muted)] tracking-widest uppercase mb-6">{tr.pro.expertiseTitle}</h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">

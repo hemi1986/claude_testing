@@ -43,6 +43,7 @@ const cvSchema = z.object({
 });
 
 const proAboutSchema = z.object({
+  mindset: z.array(z.object({ title: z.string(), description: z.string() })).optional(),
   skills: z.array(z.object({ label: z.string(), sub: z.string() })),
 });
 

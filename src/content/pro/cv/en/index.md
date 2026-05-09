@@ -1,39 +1,54 @@
 ---
 subtitle: "Michael Schempp — Software Architect & Engineering Lead"
 experience:
-  - role: Head of Digital Development
+  - role: Team Lead Digital Development
     company: Europa-Park GmbH & Co Mack KG
-    period: "2021 — present"
-    description: "Europa-Park had no internal software development for its own domain services — that needed to change. I joined in 2020 to bring technical clarity to a fragmented digital landscape: external agencies working time-and-material on complex domains they didn't really understand, and a cloud infrastructure that was more aspiration than reality.\n\nFirst concrete step: MackOne Account — a central SSO for all digital platforms at the park. Then: built an internal development team from scratch. In 2021 the team was still deploying via FTP. Today everything runs containerised on a hybrid cloud infrastructure (GCP + STACKIT), provisioned with Terraform, Kubernetes as the runtime, CI/CD via Bitbucket Pipelines and ArgoCD.\n\nThe direction: internal platform teams that own core services, while external agencies build applications on top of our infrastructure and SDKs."
+    period: "2020 — present"
+    description: |
+      Status quo 2020: External agencies, fragmented systems, and little internal tech ownership. My mission: Building a true in-house development department for Germany's largest theme park from scratch. 
+      
+      My first end boss: The "MackOne Account" – a central CIAM/SSO for the entire digital landscape. After that, I focused on structuring the team and the technology. We completely flipped the tech stack: Moving away from manual FTP uploads to a clean hybrid-cloud architecture (GCP & STACKIT). Today, everything runs containerized on Kubernetes, infrastructure is code (Terraform), and deployments are fully automated via ArgoCD. 
+      
+      The future strategy is clear: As a platform team, we build the stable core services that external partners and other teams can securely build upon.
     tags: [Engineering Leadership, Platform Engineering, Cloud Native, Kubernetes, Terraform, CIAM]
+
   - role: Software Architect
     company: Groz-Beckert KG
     period: "2017 — 2020"
-    description: "Designed and built a microservice architecture for internal business applications: Nest.js services, NATS messaging, Kubernetes with Istio service mesh, Keycloak as identity provider. Also Angular frontends for digital sales apps and running a cloud product on IBM Cloud.\n\nThe SSO and identity management work here was the direct precursor to MackOne Account."
+    description: |
+      Architecting and building a new microservice ecosystem for internal corporate applications. The stack: Nest.js, NATS Messaging, Kubernetes including Istio service mesh, and Keycloak as identity provider. 
+      
+      Parallel to this, developing Angular frontends for digital sales apps and handling Ops for a cloud product on IBM infrastructure. The intensive work with Keycloak and SSO served as the perfect blueprint for my later platform projects.
     tags: [Microservices, Kubernetes, Nest.js, Angular, SSO/IAM, Istio]
+
   - role: Software Developer
-    company: Various companies
+    company: Various Companies
     period: "until 2017"
-    description: "Developer at small and medium-sized companies — ERP systems, online platforms, IoT devices, point-of-sale. PHP, MySQL, JavaScript, Node.js. The foundation."
+    description: |
+      The grind phase: Hands-on development at various SMEs. Building inventory management systems, cloud-based POS solutions, and IoT devices for hardware control. Full-stack focus with PHP, MySQL, Node.js, and JavaScript. This is where my fundamental system and architecture skills were forged.
     tags: [PHP, Node.js, MySQL, JavaScript, Full Stack]
+
 skills:
   - category: Architecture
-    items: "Cloud Native, Microservices, Event-driven, Domain-Driven Design"
+    items: "Distributed Systems, Microservices, Resilient Software, Clean Code"
   - category: Leadership
-    items: "Engineering Management, Team Building, Scrum (PSM I), OKRs"
-  - category: Cloud & Infra
-    items: "Kubernetes, GCP, STACKIT, Terraform, ArgoCD, Docker"
-  - category: Backend
-    items: "Kotlin, TypeScript, Nest.js, REST APIs"
+    items: "Team Building, Scrum (PSM 1, PSPO 1), Agile Product Development"
+  - category: Cloud & Infrastructure
+    items: "Kubernetes, GCP, STACKIT, Terraform, Ansible, Docker"
+  - category: Software Engineering
+    items: "TypeScript, JavaScript, Nest.js, Angular, PHP"
   - category: DevSecOps
-    items: "CI/CD, CIAM/OAuth2, Grafana, Prometheus, Datadog"
+    items: "CI/CD (ArgoCD, Bamboo), OAuth2 & OpenID Connect, Istio, Grafana, Prometheus, Dash0"
   - category: Databases
-    items: "PostgreSQL, MongoDB, Redis, Kafka"
+    items: "MongoDB, CouchDB, MySQL, Redis"
+  - category: Innovation
+    items: "Generative AI, AI Agents, IoT"
+
 education:
   - degree: "M.Sc. Media and Communication Informatics"
-    institution: "Hochschule Reutlingen"
+    institution: "Reutlingen University"
   - degree: "B.Sc. Business Informatics"
-    institution: "Hochschule Reutlingen"
+    institution: "Reutlingen University"
   - degree: "Professional Scrum Master I (PSM I)"
     institution: "Scrum.org"
     year: "2023"

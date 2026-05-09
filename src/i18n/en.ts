@@ -35,6 +35,7 @@ export default {
     cvPdfHint: 'PDF version available on request —',
     cvPdfLink: 'Get in touch',
     cvExperienceTitle: 'Work Experience',
+    mindsetTitle: 'Mindset',
     cvSkillsTitle: 'Skills',
     cvEducationTitle: 'Education & Certifications',
     contactTitle: 'Contact',
