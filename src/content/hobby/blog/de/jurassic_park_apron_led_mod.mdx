@@ -1,0 +1,146 @@
+---
+title: "Apron-Beleuchtung für den Jurassic Park Pro"
+description: "Das Insider Connected Kit bringt ein neues Apron mit vorgestanzten Löchern für die originalen Stern Flasher Lamps – aber keine Lampen. Also selbst konstruiert: 3D-gedruckte Clip-In-Halter, Strom vom Slingshot, keine permanenten Eingriffe notwendig."
+date: 2026-05-09
+tags: ["Pinball", "Jurassic Park", "Stern", "3D-Druck", "Modding", "LED"]
+---
+
+import LightboxImage from '@components/LightboxImage.astro';
+
+Das Stern Insider Connected Kit ist eigentlich für die Online-Anbindung da — Scores, Challenges, Leaderboards. Aber es kommt bei der Pro-Version mit einem neuen Apron, und das hat bereits Aussparungen für die originalen Stern Flasher Lamps, wie man sie von neueren Maschinen wie dem JAWS kennt.
+
+Problem: Beim Jurassic Park Pro sind diese Lampen ab Werk nicht verbaut. Die Löcher im Apron sind jetzt aber da.
+
+Also: selbst gemacht.
+
+## Die Idee
+
+Ziel war eine Lösung, die sauberer aussieht als die Original-Montage bei Maschinen wie dem JAWS — und die vor allem **ohne permanente Eingriffe** auskommt. Kein Bohren, kein Kleben, nichts Irreversibles am Playfield. Die Halter sollen einfach in die vorhandenen Aussparungen clippen.
+
+Verbaut werden die originalen Stern Flasher Lamps (Teilenummer **#520-7000-00**) — dieselben, die auch bei JAWS zum Einsatz kommen. Die liefern zusätzliches Licht direkt auf das Playfield — macht optisch einiges her, besonders wenn der Raum dunkel ist.
+
+<div class="not-prose my-8 grid grid-cols-2 gap-4">
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/apron_before_installation.jpg"
+    alt="Apron vor der Installation"
+    caption="Das neue IC-Kit-Apron — Aussparungen vorhanden, LEDs nicht."
+    imgClass="w-full rounded-lg object-cover"
+  />
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/apron_hole.jpg"
+    alt="Aussparung im Apron"
+    caption="Die vorgestanzten Löcher — exakt ausgelegt für Clip-In-Halter."
+    imgClass="w-full rounded-lg object-cover"
+  />
+</div>
+
+## 3D-Konstruktion
+
+Zuerst die Aussparungen ausgemessen und einen Halter konstruiert, der passgenau einclippt — ohne Spiel, ohne Klebstoff, ohne Schrauben. Der Halter nimmt die Stern Flasher Lamp auf und richtet sie direkt auf das Playfield aus. Die STL-Datei ist auf Thingiverse verfügbar: [Stern Apron LED Holder auf Thingiverse](https://www.thingiverse.com/thing:7350198)
+
+<div class="not-prose my-8">
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/apron_holder_3d_file.png"
+    alt="3D-Datei des Apron-Halters"
+    caption="CAD-Entwurf des Clip-In-Halters."
+    imgClass="w-full rounded-lg object-cover"
+  />
+</div>
+
+## Drucken und Lampen einbauen
+
+Nach dem Druck: Stern Flasher Lamp (#520-7000-00) eingesetzt, verkabelt, verlötet. Die Lampe sitzt satt im Halter, kein Wackeln.
+
+<div class="not-prose my-8 grid grid-cols-2 gap-4">
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/3dprint_with_led.jpg"
+    alt="3D-Druck mit LEDs"
+    caption="Erster Fit-Check mit Flasher Lamp im Halter."
+    imgClass="w-full rounded-lg object-cover"
+  />
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/3dprint_with_led2.jpg"
+    alt="3D-Druck mit LEDs, zweite Ansicht"
+    caption="Sitz und Abstrahlwinkel passen."
+    imgClass="w-full rounded-lg object-cover"
+  />
+</div>
+
+<div class="not-prose my-8 grid grid-cols-2 gap-4">
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/3dprint_with_led3.jpg"
+    alt="3D-Druck mit LEDs, dritte Ansicht"
+    caption="Alle Halter fertig bestückt mit Flasher Lamps."
+    imgClass="w-full rounded-lg object-cover"
+  />
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/dprints_with_led_soldered.jpg"
+    alt="LEDs fertig gelötet"
+    caption="Flasher Lamps verlötet und anschlussfertig."
+    imgClass="w-full rounded-lg object-cover"
+  />
+</div>
+
+## Strom vom Slingshot
+
+Keine neue Leitung durch die Maschine ziehen — Strom direkt am Slingshot abgegriffen. Spannung passt, Absicherung ist bereits vorhanden, kein Eingriff in die Hauptverdrahtung.
+
+<div class="not-prose my-8">
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/take_power_from_slingshot.jpg"
+    alt="Stromabgriff am Slingshot"
+    caption="Strom vom Slingshot — sauber und minimalistisch."
+    imgClass="w-full rounded-lg object-cover"
+  />
+</div>
+
+## Kabelmanagement
+
+Damit innen nichts flattert, klemmt oder einem Mechanismus in die Quere kommt: Kabel sauber geführt und fixiert.
+
+<div class="not-prose my-8 grid grid-cols-2 gap-4">
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/cablemanagement.jpg"
+    alt="Kabelführung"
+    caption="Alles ordentlich verlegt."
+    imgClass="w-full rounded-lg object-cover"
+  />
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/cablemanagement2.jpg"
+    alt="Kabelführung, zweite Ansicht"
+    caption="Kein loser Kabel, nichts klemmt."
+    imgClass="w-full rounded-lg object-cover"
+  />
+</div>
+
+## Eingebaut
+
+Halter eingeclippt — fertig. Kein Loch gebohrt, kein Klecks Kleber, nichts dauerhaft verändert.
+
+<div class="not-prose my-8 grid grid-cols-2 gap-4">
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/3dprint_in_apron_inside.jpg"
+    alt="Halter eingebaut, Innenansicht"
+    caption="Sitzt sauber in der Aussparung, kein Spiel."
+    imgClass="w-full rounded-lg object-cover"
+  />
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/installed_outside.jpg"
+    alt="Halter montiert, Außenansicht"
+    caption="Von außen: bündig mit dem Apron."
+    imgClass="w-full rounded-lg object-cover"
+  />
+</div>
+
+<div class="not-prose my-8">
+  <LightboxImage
+    src="/images/hobby/jurassic_park_apron/installed_working.jpg"
+    alt="LEDs in Betrieb"
+    caption="Flasher Lamps an — Playfield-Beleuchtung wie bei den neueren Stern-Maschinen."
+    imgClass="w-full rounded-lg object-cover"
+  />
+</div>
+
+Sieht von außen sauberer aus als die werksseitige Montage bei JAWS (Find ich) — und lässt sich in fünf Minuten wieder rückstandslos ausbauen. Wer das Insider Connected Kit hat und die Stern Flasher Lamps (#520-7000-00) noch nicht verbaut hat: lohnt sich. Die STL-Datei für den Halter gibt's auf [Thingiverse](https://www.thingiverse.com/thing:7350198).
+
+Hinweis: Dieser Blog-Artikel wurde mit Hilfe von KI (Claude Sonnet 4.6) geschrieben.
