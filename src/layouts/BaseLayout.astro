@@ -26,9 +26,6 @@ const lang = getLang(Astro.url);
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
     <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'de_DE'} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
     <script is:inline>
       // Prevent flash of wrong theme
       const theme = localStorage.getItem('theme') ?? 'dark';

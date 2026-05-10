@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
 
 @theme {
   /* Base colors */
@@ -20,8 +22,8 @@
   --color-hobby-glow: #ff006e66;
 
   /* Fonts */
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: 'Inter Variable', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'Fira Code', monospace;
 }
 
 /* Light mode overrides */

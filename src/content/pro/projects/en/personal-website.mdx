@@ -1,0 +1,95 @@
+---
+title: "michaelschempp.de — Personal Website with Astro & Claude Code"
+description: "How I built a bilingual personal website in ~16 hours — and discovered Claude Code as a true development partner along the way."
+date: 2025-01-01
+tags: ["Astro", "Claude Code", "AI", "Tailwind CSS", "Personal Website"]
+status: ongoing
+---
+
+import LightboxImage from "@components/LightboxImage.astro";
+
+<LightboxImage
+  src="/images/pro/website-project/screenshot_landing.png"
+  alt="Landing Page of michaelschempp.de"
+  caption="The Landing Page — two worlds, one entry point."
+  imgClass="w-full rounded-lg object-cover"
+/>
+
+## Motivation
+
+I've wanted a personal website for a long time — partly as a digital CV, and partly as a space to showcase my hobbies and write about things that might help others. Pinball restoration, modding, 3D printing, etc. — these are just as much a part of me as software architecture and engineering leadership.
+
+At the same time, I finally wanted to get to know Claude Code in practice, not just in theory. Building my own website seemed like the ideal framework: manageable enough to focus on the tool, but complex enough to require real design decisions.
+
+## One Website, Two Worlds
+
+A key challenge was the underlying concept: two completely different areas under one domain.
+
+- **PRO://** — Software Architect, Engineering Lead, Cloud-native systems
+- **HOBBY://** — Pinball & Electronics, Retro, 3D printing, Gaming
+
+<LightboxImage
+  src="/images/pro/website-project/screenshot_pro.png"
+  alt="Pro section: About me"
+  caption="The PRO section — Cyan as the accent color, clean structure."
+  imgClass="w-full rounded-lg object-cover"
+/>
+
+Claude Code understood this domain remarkably quickly. Based on my description of a _"retro 80s arcade vibe, but professional and not too playful,"_ a design system with two color worlds emerged: Cyan for the professional side, Magenta for the hobby side. No hours-long design process, just an iterative conversation.
+
+## Claude Code as a Development Partner
+
+What impressed me most was the speed at which the foundation was built — including i18n (German/English), Content Collections, routing, and the design system. Honestly, these are things that would have taken me significantly longer on my own.
+
+However, I also quickly learned: **Context is everything.** Claude Code only delivers truly great results when you provide the right context. Inspired by [Matt Pocock's Skills approach](https://github.com/mattpocock/skills), I started using reusable skills for Claude Code — small, focused prompts that act as tools during development.
+
+One example is the `grill-me` skill, which I used for this very post:
+
+```markdown
+---
+name: grill-me
+description: Interview the user relentlessly about a plan or design
+  until reaching shared understanding, resolving each branch of the
+  decision tree.
+---
+
+Interview me relentlessly about every aspect of this plan until we
+reach a shared understanding. Walk down each branch of the design
+tree, resolving dependencies between decisions one-by-one.
+For each question, provide your recommended answer.
+
+Ask the questions one at a time.
+
+If a question can be answered by exploring the codebase,
+explore the codebase instead.
+
+```
+
+Instead of just starting to write, Claude Code questioned me systematically — about motivation, tone, structure, images — ensuring the post reflected my actual experiences.
+
+## Effort and Result
+
+In total, I invested about **16 hours**, spread across several evenings and weekends. This includes iterations on content, multiple CV adjustments, and writing initial blog posts without AI assistance.
+
+The result: a complete, bilingual website with its own design system, Content Collections, and CI/CD deployment.
+
+## Tech Stack
+
+| Technology | Usage |
+| --- | --- |
+| **Astro 6** | Static Site Generator, Routing, i18n |
+| **Tailwind CSS v4** | Styling via Vite plugin |
+| **Content Collections** | Markdown-based content with type safety |
+| **Claude Code** | Dev partner, code generation, skills |
+
+## Key Takeaways
+
+**Engineering is not dead.** The difference between "Claude Code generates something" and "Claude Code delivers exactly what I want" lies in good context and the ability to critically evaluate and steer the results.
+
+At the same time, even with a project as straightforward as a personal website, you can create real "wow" moments when AI support is used not as a shortcut, but as a tool within the workflow.
+
+The next steps with Claude Code will involve more complex applications — to see what true agentic engineering looks like with non-trivial scope. There is still much for me to learn.
+
+---
+
+*translated with Gemini*
