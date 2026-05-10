@@ -6,7 +6,7 @@ import { getProjects } from '@content/utils';
 const lang = getLang(Astro.url) as Lang;
 const tr = t(lang);
 const base = getLocalePath(lang, '');
-
+console.log(lang);
 const projects = (await getProjects('pro', lang))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
