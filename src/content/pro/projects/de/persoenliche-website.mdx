@@ -1,0 +1,90 @@
+---
+title: "michaelschempp.de — Persönliche Website mit Astro & Claude Code"
+description: "Wie ich in ~16 Stunden eine zweisprachige persönliche Website gebaut habe — und dabei Claude Code als echten Entwicklungspartner kennengelernt habe."
+date: 2025-01-01
+tags: ["Astro", "Claude Code", "AI", "Tailwind CSS", "Personal Website"]
+status: ongoing
+---
+
+import LightboxImage from "@components/LightboxImage.astro";
+
+<LightboxImage
+  src="/images/pro/website-project/screenshot_landing.png"
+  alt="Landing Page von michaelschempp.de"
+  caption="Die Landing Page — zwei Welten, ein Einstieg."
+  imgClass="w-full rounded-lg object-cover"
+/>
+
+## Motivation
+
+Ich wollte schon lange eine persönliche Website — einerseits als digitalen Lebenslauf, andererseits als Platz, um meine Hobbies zu zeigen und über Dinge zu schreiben, die anderen vielleicht auch helfen. Flipper-Restaurierung, Modding, 3d Druck etc. — das gehört genauso zu mir wie Softwarearchitektur und Engineering Leadership.
+
+Gleichzeitig wollte ich Claude Code endlich in der Praxis kennenlernen, nicht nur in der Theorie. Ein eigenes Website-Projekt schien der ideale Rahmen: überschaubar genug, um den Fokus auf das Werkzeug zu legen — aber komplex genug, um echte Designentscheidungen zu treffen.
+
+## Eine Website, zwei Welten
+
+Eine Herausforderung war das grundsätzliche Konzept: zwei völlig unterschiedliche Bereiche unter einer Domain.
+
+- **PRO://** — Software-Architekt, Engineering Lead, Cloud-native Systeme
+- **HOBBY://** — Flipper & Elektronik, Retro, 3d-Druck, Gaming
+
+<LightboxImage
+  src="/images/pro/website-project/screenshot_pro.png"
+  alt="Pro-Bereich: Über mich"
+  caption="Der PRO-Bereich — Cyan als Akzentfarbe, klare Struktur."
+  imgClass="w-full rounded-lg object-cover"
+/>
+
+Claude Code hat diese Domäne bemerkenswert schnell verstanden. Nach meiner Beschreibung _"retro 80s arcade vibe, aber professionell und nicht zu verspielt"_ entstand ein Design-System mit zwei Farbwelten: Cyan für den professionellen Bereich, Magenta für die Hobby-Seite. Kein stundenlanger Designprozess, sondern ein iteratives Gespräch.
+
+## Claude Code als Entwicklungspartner
+
+Was mich am meisten beeindruckt hat: die Geschwindigkeit, mit der das Grundgerüst stand — inklusive i18n (Deutsch/Englisch), Content Collections, Routing und Design-System. Dinge, für die ich alleine ehrlicherweise deutlich länger gebraucht hätte.
+
+Aber ich habe auch schnell gelernt: **Context ist alles.** Claude Code liefert nur dann wirklich gute Ergebnisse, wenn man ihm den richtigen Kontext gibt. Inspiriert von [Matt Pocock's Skills-Ansatz](https://github.com/mattpocock/skills) habe ich begonnen, wiederverwendbare Skills für Claude Code zu nutzen — kleine, fokussierte Prompts, die als Werkzeuge in der Entwicklung eingesetzt werden können.
+
+Ein Beispiel ist der `grill-me`-Skill, den ich für diesen Post hier selbst auch eingesetzt habe:
+
+```markdown
+---
+name: grill-me
+description: Interview the user relentlessly about a plan or design
+  until reaching shared understanding, resolving each branch of the
+  decision tree.
+---
+
+Interview me relentlessly about every aspect of this plan until we
+reach a shared understanding. Walk down each branch of the design
+tree, resolving dependencies between decisions one-by-one.
+For each question, provide your recommended answer.
+
+Ask the questions one at a time.
+
+If a question can be answered by exploring the codebase,
+explore the codebase instead.
+```
+
+Statt einfach drauflos zu schreiben, hat Claude Code mich systematisch befragt — über Motivation, Tonalität, Struktur, Bilder — und so sichergestellt, dass der Post meinen tatsächlichen Erfahrungen entspricht.
+
+## Aufwand und Ergebnis
+
+Insgesamt habe ich etwa **16 Stunden** investiert — verteilt über mehrere Abende und Wochenenden. Darin enthalten sind auch Iterationen am Content, mehrfache Anpassungen am Lebenslauf und das Schreiben erster Blogposts ohne KI-Unterstützung.
+
+Das Ergebnis: eine vollständige, zweisprachige Website mit eigenem Design-System, Content Collections und CI/CD-Deployment.
+
+## Tech Stack
+
+| Technologie             | Einsatz                                       |
+| ----------------------- | --------------------------------------------- |
+| **Astro 6**             | Static Site Generator, Routing, i18n          |
+| **Tailwind CSS v4**     | Styling via Vite-Plugin                       |
+| **Content Collections** | Markdown-basierter Content mit Typsicherheit  |
+| **Claude Code**         | Entwicklungspartner, Code-Generierung, Skills |
+
+## Was ich mitgenommen habe
+
+**Engineering ist nicht tot.** Der Unterschied zwischen "Claude Code generiert irgendwas" und "Claude Code liefert genau das, was ich will" ist guter Kontext und die Fähigkeit, Ergebnisse kritisch zu beurteilen und zu steuern.
+
+Gleichzeitig: Selbst bei einem so überschaubaren Projekt wie einer persönlichen Website lassen sich echte Wow-Momente erzeugen — dann, wenn KI-Unterstützung nicht als Abkürzung, sondern als Werkzeug im Workflow eingesetzt wird.
+
+Die nächsten Schritte mit Claude Code werden komplexere Anwendungen sein — um zu sehen, wie echtes agentisches Engineering bei nicht-trivialem Scope aussieht. Es gibt noch viel zu lernen für mich.

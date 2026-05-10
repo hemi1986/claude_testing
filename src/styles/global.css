@@ -131,3 +131,11 @@ body {
 
 .prose-hobby a { color: var(--color-hobby); }
 .prose-hobby blockquote { border-left-color: var(--color-hobby); }
+
+th {
+  text-align: left;
+}
+
+td {
+  padding-right: 1rem;
+}
