@@ -1,6 +1,6 @@
 export default {
   nav: {
-    pro: 'Professional',
+    pro: 'Pro',
     hobby: 'Hobby',
     about: 'About',
     projects: 'Projects',

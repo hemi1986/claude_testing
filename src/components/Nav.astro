@@ -78,14 +78,15 @@ const currentPath = Astro.url.pathname;
     </nav>
 
     <div class="ml-auto flex items-center gap-2">
-      <!-- Language switcher -->
+      <!-- Language switcher (desktop only) -->
       <a
         href={otherLang === 'de' ? Astro.url.pathname.replace(/^\/en/, '') || '/' : `/en${Astro.url.pathname}`}
-        class="font-mono text-xs px-2 py-1 rounded border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+        class="hidden md:inline-flex font-mono text-xs px-2 py-1 rounded border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
       >
         {tr.common.switchLang}
       </a>
-      <ThemeToggle />
+      <!-- Theme toggle (desktop only) -->
+      <div class="hidden md:block"><ThemeToggle /></div>
       <!-- Hamburger (mobile only) -->
       <button
         id="nav-toggle"
@@ -114,6 +115,22 @@ const currentPath = Astro.url.pathname;
         </a>
       ))}
     </nav>
+    <div class="mt-2 pt-2 border-t border-[var(--color-border)] flex items-center gap-2">
+      <a
+        href={otherLang === 'de' ? Astro.url.pathname.replace(/^\/en/, '') || '/' : `/en${Astro.url.pathname}`}
+        class="font-mono text-xs px-2 py-1 rounded border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+      >
+        {tr.common.switchLang}
+      </a>
+      <button
+        id="theme-toggle-mobile"
+        aria-label="Toggle dark/light mode"
+        class="ml-auto w-9 h-9 flex items-center justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:border-[var(--color-pro)] transition-colors cursor-pointer"
+      >
+        <span class="mobile-dark-icon text-lg">☀️</span>
+        <span class="mobile-light-icon text-lg hidden">🌙</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -139,4 +156,33 @@ const currentPath = Astro.url.pathname;
       toggle.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // Mobile theme toggle
+  const mobileBtn = document.getElementById('theme-toggle-mobile');
+  if (mobileBtn) {
+    const mobileDarkIcon = mobileBtn.querySelector('.mobile-dark-icon') as HTMLElement;
+    const mobileLightIcon = mobileBtn.querySelector('.mobile-light-icon') as HTMLElement;
+
+    function syncMobileIcons() {
+      const isLight = document.documentElement.classList.contains('light');
+      mobileDarkIcon.classList.toggle('hidden', isLight);
+      mobileLightIcon.classList.toggle('hidden', !isLight);
+    }
+
+    syncMobileIcons();
+
+    mobileBtn.addEventListener('click', () => {
+      const isLight = document.documentElement.classList.contains('light');
+      const next = isLight ? 'dark' : 'light';
+      localStorage.setItem('theme', next);
+      document.documentElement.classList.toggle('light', next === 'light');
+      syncMobileIcons();
+      // Sync desktop toggle icons
+      const desktopBtn = document.getElementById('theme-toggle');
+      if (desktopBtn) {
+        desktopBtn.querySelector('.dark-icon')?.classList.toggle('hidden', next === 'light');
+        desktopBtn.querySelector('.light-icon')?.classList.toggle('hidden', next === 'dark');
+      }
+    });
+  }
 </script>
