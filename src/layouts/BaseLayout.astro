@@ -1,6 +1,7 @@
 ---
 import Nav from '../components/Nav.astro';
 import '../styles/global.css';
+import { getLang } from '../i18n';
 
 interface Props {
   title: string;
@@ -9,15 +10,21 @@ interface Props {
 }
 
 const { title, description = 'Michael Schempp — Software Architect & Pinball Nerd', section } = Astro.props;
+const lang = getLang(Astro.url);
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title} — Michael Schempp</title>
+    <meta property="og:title" content={`${title} — Michael Schempp`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'de_DE'} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
