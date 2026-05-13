@@ -1,36 +1,350 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Michael Schempp Lebenslauf" />
   <meta name="author" content="Michael Schempp" />
   <title>Michael Schempp - Cloud Software Engineering</title>
-  <link href="./css/bootstrap.min.css" rel="stylesheet" />
-  <link href="style.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0a0a0f;
+      --color-bg-surface: #12121a;
+      --color-bg-elevated: #1a1a26;
+      --color-text: #e8e8f0;
+      --color-text-muted: #8888a8;
+      --color-border: #2a2a3a;
+      --color-pro: #00d4ff;
+      --color-pro-dim: rgba(0, 212, 255, 0.2);
+      --color-pro-glow: rgba(0, 212, 255, 0.4);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --color-bg: #f4f4f8;
+        --color-bg-surface: #ffffff;
+        --color-bg-elevated: #ebebf2;
+        --color-text: #1a1a2e;
+        --color-text-muted: #5a5a7a;
+        --color-border: #d0d0e0;
+        --color-pro: #0099cc;
+        --color-pro-dim: rgba(0, 153, 204, 0.133);
+        --color-pro-glow: rgba(0, 153, 204, 0.267);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--color-pro);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 2rem;
+    }
+
+    .passbild {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .passbild img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--color-pro);
+      box-shadow: 0 0 12px var(--color-pro-glow);
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .header h1 .thinFont {
+      font-weight: 300;
+      color: var(--color-text-muted);
+    }
+
+    .header h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: var(--color-pro);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .content-row {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 2.5rem;
+      padding-bottom: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .content-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Sidebar */
+    .skills {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .skill-box {
+      background-color: var(--color-bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+
+    .skill-header h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-text-muted);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .skill-content {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    .skill-content p {
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Timeline / Main */
+    .lifeline {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .lifeline-topic {
+      position: relative;
+    }
+
+    .lifeline-header h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .lifeline-header h2 .heading-addition {
+      text-transform: none;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      opacity: 0.7;
+    }
+
+    .lifeline-section {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    @media (max-width: 640px) {
+      .lifeline-section {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+    }
+
+    .lifeline-section::before {
+      content: '';
+      position: absolute;
+      left: 120px;
+      top: 6px;
+      bottom: 0;
+      width: 1px;
+      background-color: var(--color-border);
+    }
+
+    @media (max-width: 640px) {
+      .lifeline-section::before {
+        display: none;
+      }
+    }
+
+    .lifeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      text-align: right;
+      padding-right: 1.5rem;
+      line-height: 1.5;
+      position: relative;
+    }
+
+    @media (max-width: 640px) {
+      .lifeline-date {
+        text-align: left;
+        padding-right: 0;
+        color: var(--color-pro);
+      }
+    }
+
+    .lifeline-date::after {
+      content: '';
+      position: absolute;
+      right: -5.5px;
+      top: 5px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: var(--color-bg);
+      border: 2px solid var(--color-pro);
+      box-shadow: 0 0 6px var(--color-pro-glow);
+    }
+
+    @media (max-width: 640px) {
+      .lifeline-date::after {
+        display: none;
+      }
+    }
+
+    .lifeline-content {
+      padding-left: 0.5rem;
+    }
+
+    .position {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .position p {
+      font-size: 0.9375rem;
+    }
+
+    .position p:last-child {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    .description {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    .important-keyword {
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    /* Print styles */
+    @media print {
+      :root {
+        --color-bg: #fff;
+        --color-bg-surface: #f4f4f8;
+        --color-bg-elevated: #ebebf2;
+        --color-text: #1a1a2e;
+        --color-text-muted: #5a5a7a;
+        --color-border: #d0d0e0;
+        --color-pro: #0099cc;
+        --color-pro-dim: rgba(0, 153, 204, 0.133);
+        --color-pro-glow: rgba(0, 153, 204, 0.267);
+      }
+
+      body {
+        background: #fff;
+        color: #1a1a2e;
+        font-size: 12px;
+      }
+
+      .passbild img {
+        box-shadow: none;
+        border-color: #0099cc;
+      }
+
+      a {
+        color: #0099cc;
+        text-decoration: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="passbild">
-    <img src="./images/passbild.jpg" class="rounded-circle" alt="Michael Schempp - Softwareentwickler" />
+  <div class="header">
+    <div class="passbild">
+      <img src="./michi.png" alt="Michael Schempp - Softwareentwickler" />
+    </div>
+    <h1><span class="thinFont">Michael</span> Schempp</h1>
+    <h3>Software-Architekt, Engineering Lead und bekennender Nerd.</h3>
   </div>
 
-  <div class="container-flow">
-    <div class="row">
-      <div class="col-sm-12 header">
-        <h1><span class="thinFont">Michael</span> Schempp</h1>
-        <h3>Cloud Software Engineering</h3>
-      </div>
-    </div>
-    <div class="row contentRow">
-      <div class="col-sm-3 skills">
-        <div class="skillBox">
-          <div class="skillHeader">
+  <div class="container">
+    <div class="content-row">
+      <div class="skills">
+        <div class="skill-box">
+          <div class="skill-header">
             <h3>Kontakt</h3>
           </div>
-          <div class="skillContent">
+          <div class="skill-content">
             <p>
               Breitenfeldstr. 2 <br />
               79341 Kenzingen <br />
@@ -38,6 +352,7 @@
             </p>
             <p>+49 (0) 152 22763067</p>
             <p>
+              www.michaelschempp.de <br />
               contact@michaelschempp.de <br />
               github.com/hemi1986 <br />
               xing.com/profile/Michael_Schempp4 <br />
@@ -47,23 +362,23 @@
           </div>
         </div>
 
-        <div class="skillBox">
-          <div class="skillHeader">
+        <div class="skill-box">
+          <div class="skill-header">
             <h3>Sprachen</h3>
           </div>
-          <div class="skillContent">
+          <div class="skill-content">
             <p>
-              Deutsch (Muttersprache) <br />
-              Englisch (Level B2)
+              Deutsch<br />
+              Englisch
             </p>
           </div>
         </div>
 
-        <div class="skillBox">
-          <div class="skillHeader">
+        <div class="skill-box">
+          <div class="skill-header">
             <h3>Dev</h3>
           </div>
-          <div class="skillContent">
+          <div class="skill-content">
             <p>
               Typescript, Javascript, <br />
               PHP, Java, C#, Python, <br />
@@ -77,11 +392,11 @@
           </div>
         </div>
 
-        <div class="skillBox">
-          <div class="skillHeader">
+        <div class="skill-box">
+          <div class="skill-header">
             <h3>Sec</h3>
           </div>
-          <div class="skillContent">
+          <div class="skill-content">
             <p>
               Trivy, Istio<br />
               OAUTH2, OpenID Connect<br />
@@ -90,11 +405,11 @@
           </div>
         </div>
 
-        <div class="skillBox">
-          <div class="skillHeader">
+        <div class="skill-box">
+          <div class="skill-header">
             <h3>Ops</h3>
           </div>
-          <div class="skillContent">
+          <div class="skill-content">
             <p>
               Docker, -Compose, Kubernetes, <br />
               GCP, STACKIT, Portainer,<br />
@@ -107,11 +422,11 @@
           </div>
         </div>
 
-        <div class="skillBox">
-          <div class="skillHeader">
+        <div class="skill-box">
+          <div class="skill-header">
             <h3>Leidenschaften</h3>
           </div>
-          <div class="skillContent">
+          <div class="skill-content">
             <p>
               Software-Entwicklung & Architektur, <br />
               Verteilte Systeme, Cloud, DevSecOps, <br />
@@ -124,26 +439,27 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-9 lifeline">
-        <div class="lifelineTopic">
-          <div class="lifelineHeader">
+
+      <div class="lifeline">
+        <div class="lifeline-topic">
+          <div class="lifeline-header">
             <h2>Anstellung</h2>
           </div>
 
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">
+          <div class="lifeline-section">
+            <div class="lifeline-date">
               Dez. 2021<br />
               - Heute
             </div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Teamleiter "Digital Development"</b>
                 </p>
                 <p>Europa-Park GmbH & Co Mack KG</p>
               </div>
               <div class="description">
-                <span class="importantKeyWord"> Erfolgreicher Aufbau </span>
+                <span class="important-keyword"> Erfolgreicher Aufbau </span>
                 eines wachsenden Entwicklerteams durch Rekrutierung und
                 Integration von bestehenden sowie neuen Mitarbeitern.
                 Einführung und Etablierung agiler Methoden (SCRUM), inklusive
@@ -151,9 +467,9 @@
                 Arbeitsweisen.<br /><br />
 
                 Als
-                <span class="importantKeyWord">Technical Lead</span>
+                <span class="important-keyword">Technical Lead</span>
                 Verantwortung für die Definition und Implementierung eines
-                <span class="importantKeyWord">modernen Technologiestacks</span>
+                <span class="important-keyword">modernen Technologiestacks</span>
                 (Angular, Nest.js) zur Entwicklung von Softwarekomponenten.
                 Einführung von Docker zur Optimierung der Entwicklungs- und
                 Bereitstellungsprozesse. Vermittlung weiterer moderner
@@ -162,13 +478,13 @@
                 Codequalität, Teamproduktivität und Effizienz zu steigern.<br /><br />
 
                 Schrittweise Heranführung des Teams an
-                <span class="importantKeyWord">Cloud-Technologien</span> durch
+                <span class="important-keyword">Cloud-Technologien</span> durch
                 die Umsetzung kleinerer Produkte in der Google Cloud, z. B.
                 der "PrivacyLog", einer Lösung zur DSGVO-konformen
                 Datenlöschung und -automatisierung über serverlose Funktionen
                 (Cloud Run, Cloud Functions).<br /><br />
 
-                <span class="importantKeyWord">Konzeption und Entwicklung</span>
+                <span class="important-keyword">Konzeption und Entwicklung</span>
                 eines Stammdatenservices für gastronomische Daten, der
                 Informationen aus einem bestehenden Warenwirtschaftssystem mit
                 Marketing-Daten anreichert und Menüs über standardisierte
@@ -182,13 +498,13 @@
                 Interest (POIs). <br /><br />
 
                 Hauptverantwortung für den Aufbau einer neuen
-                <span class="importantKeyWord">hybriden Cloud-Umgebung (Google Cloud und STACKIT)</span>, deren
+                <span class="important-keyword">hybriden Cloud-Umgebung (Google Cloud und STACKIT)</span>, deren
                 Konfiguration vollständig mit Terraform umgesetzt
                 wurde. Dies umfasste neben die Erstellung der gesamten
                 GCP-Organisationsstruktur, um zukünftige interne und externe
                 Cloud-Projekte effizient zu ermöglichen, auch die
                 Bereitstellung der
-                <span class="importantKeyWord">Kubernetes Cluster und Datenbanken</span>
+                <span class="important-keyword">Kubernetes Cluster und Datenbanken</span>
                 bei STACKIT.<br />
 
                 Arbeitslasten der neuen Services werden auf Kubernetes
@@ -197,7 +513,7 @@
                 CI/CD-Pipelines (Bitbucket Pipelines und ArgoCD). <br /><br />
 
                 Weiterhin 2 Jahre
-                <span class="importantKeyWord">Product Ownership</span> für
+                <span class="important-keyword">Product Ownership</span> für
                 das unternehmensweite Customer Identity and Access Management
                 System mit anschließender Überführung an neue Product Ownerin
                 durch Neuanstellung im Team.<br />
@@ -205,70 +521,70 @@
             </div>
           </div>
 
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">
+          <div class="lifeline-section">
+            <div class="lifeline-date">
               Juli 2020<br />
               - Dez. 2021
             </div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Manager Digitale Plattformen</b>
                 </p>
                 <p>Europa-Park GmbH & Co Mack KG</p>
               </div>
               <div class="description">
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   (Technischer) Projektleiter </span>bei der Einführung eines zentralen Customer Identity and
                 Access-Management (CIAM) für die digitalen Plattformen (Shops,
                 Apps, Marketing-Automation) sowie die spätere Übernahme des
                 CIAM-Systems als
-                <span class="importantKeyWord">Product Owner</span>.<br />
-                <span class="importantKeyWord"> Beratung </span>
+                <span class="important-keyword">Product Owner</span>.<br />
+                <span class="important-keyword"> Beratung </span>
                 der verschiedenen Teams & Dienstleister bei den Themen
                 Software-Architektur, Software-Entwicklung, DevOps,
                 Plattformunabhängigkeit & standardisierte API's. <br />
-                <span class="importantKeyWord"> Entwicklung </span>
+                <span class="important-keyword"> Entwicklung </span>
                 kleinerer Webapplikationen und Scripte zur Datenaggregation
                 und Anbindung von Drittsoftware an das neue CIAM-System.<br />
-                <span class="importantKeyWord"> Schulung </span>
+                <span class="important-keyword"> Schulung </span>
                 von Kollegen der Direktionen Digital & Research sowie IT in
                 Container-Technologie (Docker, Kubernetes) und verschiedenen
                 Konzepten entlang des Software-Lebenszyklus wie
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Infrastructure as Code, CI/CD, Clean Code</span>
-                oder <span class="importantKeyWord">DevSecOps</span>.
+                oder <span class="important-keyword">DevSecOps</span>.
               </div>
             </div>
           </div>
 
-          <div class="row lifelineSection" style="margin-top: 20rem; padding-top: 2rem">
-            <div class="col-sm-2 lifelineDate">
+          <div class="lifeline-section">
+            <div class="lifeline-date">
               Apr. 2017<br />
               - Juni 2020
             </div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Softwareentwickler & -architekt</b>
                 </p>
                 <p>Groz-Beckert KG</p>
               </div>
               <div class="description">
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Administration & Weiterentwicklung
                 </span>
                 des digitalen Produkts "Ideal Needle Handling" zur Erfassung
                 von Nadelbrüchen in der Nähindustrie auf Basis von Javascript
                 / Meteor.js & MongoDB und der Administration in der Cloud (IBM
                 Cloud, Docker/Kubernetes) <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Konzeption & Entwicklung von Webkomponenten
                 </span>
                 für die digitalen Vertriebsapps auf Basis von Javascript,
                 Typescript und Angular sowie deren Bereitstellung für die
                 Vertriebsmitarbeiter <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Konzeption & Implementierung einer Softwarearchitektur
                 </span>
                 auf Microservice Basis für alte & neue interne
@@ -287,114 +603,113 @@
             </div>
           </div>
 
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">
+          <div class="lifeline-section">
+            <div class="lifeline-date">
               Aug. 2016<br />
               - März 2017
             </div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Softwareentwickler & -architekt</b>
                 </p>
                 <p>Retail United GmbH & Co. KG</p>
               </div>
               <div class="description">
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Konzeption & Entwicklung einer Online Kassen-Lösung
                 </span>
                 für den Einzelhandel mit Schnittstelle zum neu eingeführten
-                Cloud-ERP-System „weclapp“ auf Basis von
+                Cloud-ERP-System „weclapp" auf Basis von
                 PHP/Node.js/MySQL/Javascript <br />
-                <span class="importantKeyWord">
-                  Konzeption & Entwicklung eines „IOT-Devices“
+                <span class="important-keyword">
+                  Konzeption & Entwicklung eines „IOT-Devices"
                 </span>
                 zur Ansteuerung von Bondruckern und Kassenschubladen aus der
                 Cloud auf Basis von Linux & Node.js <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Entwicklung weiterer Schnittstellen
                 </span>
-                zu Drittanbietern wie dem Bezahlservice-Anbieter „sumUp“
+                zu Drittanbietern wie dem Bezahlservice-Anbieter „sumUp"
                 <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Bereitstellung aller nötigen Services
                 </span>
                 zur Entwicklung, dem Betrieb, der Wartung sowie dem Deployment
                 der Softwarekomponenten <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Linux Serveradministration
                 </span>
               </div>
             </div>
           </div>
 
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">
+          <div class="lifeline-section">
+            <div class="lifeline-date">
               Juli 2015<br />
               - Juli 2016
             </div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Softwareentwickler</b>
                 </p>
                 <p>KabelWelt GmbH & Co. KG</p>
               </div>
               <div class="description">
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Konzeption & Entwicklung diverser kleinerer Web-Apps
                 </span>
                 zum Monitoring der Verkaufszahlen aus den ca. 50
                 Einzelhandels-Standorten der Firma auf Basis von PHP/MySQL &
                 Javascript <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Konzeption & Entwicklung eines Frameworks
                 </span>
                 für zukünftige Webprojekte auf Basis von PHP & Node.js <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Bereitstellung und Administration eines neuen Web-Servers
                 </span>
-
                 (Linux, Plesk Web-Host) für diverse Online-Projekte der Firma
                 <br />
                 Durchführung des geplanten internen
-                <span class="importantKeyWord"> Infrastruktur-Wechsels </span>
+                <span class="important-keyword"> Infrastruktur-Wechsels </span>
                 von Microsoft Exchange zu Apple OSX Server <br />
               </div>
             </div>
           </div>
 
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">
+          <div class="lifeline-section">
+            <div class="lifeline-date">
               Juni 2013<br />
               - Juni 2015
             </div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Softwareentwickler</b>
                 </p>
                 <p>RSU Reifen-Center GmbH</p>
               </div>
               <div class="description">
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Administration und Weiterentwicklung
                 </span>
                 des firmeneigenen Warenwirtschaftssystems <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Weiterentwicklung der Online-Plattformen
                 </span>
-                „www.reifensuche.com“ sowie „www.tyresystem.de“ <br />
+                „www.reifensuche.com" sowie „www.tyresystem.de" <br />
                 teamorientierte
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Konzeption und Realisierung
                 </span>
                 neuer Softwarekomponenten mit PHP/MySQL & Javascript <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Entwicklung und Optimierung
                 </span>
                 von Schnittstellen zu Drittanbietern <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Administration der Unternehmensserver
                 </span>
                 (Linux) sowie Administration der Versionsverwaltung des
@@ -403,61 +718,57 @@
             </div>
           </div>
 
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">
+          <div class="lifeline-section">
+            <div class="lifeline-date">
               März 2009<br />
               - Apr. 2013
             </div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Praktikant / Werksstudent</b>
                 </p>
                 <p>MediaLas Electronics GmbH</p>
               </div>
               <div class="description">
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Entwicklung eines Prototyps
                 </span>
                 zur körperbasierten Steuerung eines Laserprojektors zu
                 Showzwecken durch Microsoft Kinect (Master Thesis)<br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Entwicklung eines Verwaltungssystems
                 </span>
                 für Bauteile, Seriennummern, Reparaturen, Produkte etc. auf
                 Basis von PHP und MySQL (Bachelor Thesis)<br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Konzeption und Realisierung
                 </span>
                 der Unternehmenswebseiten auf Basis von Typo3<br />
                 Eigenverantwortliche
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Planung und Realisierung
                 </span>
-
                 von Lasershows in Zusammenarbeit mit Kunden<br />
               </div>
             </div>
           </div>
         </div>
 
-        <div class="lifelineTopic" style="margin-top: 35rem; padding-top: 2rem">
-          <div class="lifelineHeader">
+        <div class="lifeline-topic">
+          <div class="lifeline-header">
             <h2>Ausbildung</h2>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">
-              2010<br />
-              -2013
-            </div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2010<br />-2013</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p><b>Master of Science (M.Sc.)</b> Note: 1.5</p>
                 <p>Hochschule Reutlingen</p>
               </div>
               <div class="description">
                 Studiengang: Medien- und Kommunikationsinformatik <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Thesis: Interaktive Steuerung von Showlaserprojektoren mit
                   dem Trackingsystem Kinect <br />
                 </span>
@@ -467,19 +778,16 @@
             </div>
           </div>
 
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">
-              2007<br />
-              -2010
-            </div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2007<br />-2010</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p><b>Bachelor of Science (B.Sc.)</b> Note: 2.2</p>
                 <p>Hochschule Reutlingen</p>
               </div>
               <div class="description">
                 Studiengang: Wirtschaftsinformatik <br />
-                <span class="importantKeyWord">
+                <span class="important-keyword">
                   Thesis: Nebenläufigkeit von Transaktionen innerhalb einer
                   Webanwendung <br />
                 </span>
@@ -491,10 +799,10 @@
             </div>
           </div>
 
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2006</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2006</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Allgemeine Hochschulreife</b>
                   Note: 2.6
@@ -509,14 +817,14 @@
           </div>
         </div>
 
-        <div class="lifelineTopic">
-          <div class="lifelineHeader">
+        <div class="lifeline-topic">
+          <div class="lifeline-header">
             <h2>Zertifikate / Trainings</h2>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2023</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2023</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Professional Scrum Master 1 (PSM 1)</b>
                 </p>
@@ -525,10 +833,10 @@
               <div class="description"></div>
             </div>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2023</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2023</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Professional Scrum Product Owner 1 (PSPO 1)</b>
                 </p>
@@ -537,10 +845,10 @@
               <div class="description"></div>
             </div>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2022</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2022</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Führungskräfte-Training</b>
                 </p>
@@ -549,10 +857,10 @@
               <div class="description"></div>
             </div>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2019 - 2020</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2019 - 2020</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Englisch Sprachtraining</b>
                 </p>
@@ -561,10 +869,10 @@
               <div class="description"></div>
             </div>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2018</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2018</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>FirstSpirit Developer Training Basic</b>
                 </p>
@@ -573,10 +881,10 @@
               <div class="description"></div>
             </div>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2018</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2018</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Angular Developer Training</b>
                 </p>
@@ -585,10 +893,10 @@
               <div class="description"></div>
             </div>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2017</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2017</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Docker Fundamentals + Enterprise Operations Course</b>
                 </p>
@@ -599,17 +907,17 @@
           </div>
         </div>
 
-        <div class="lifelineTopic">
-          <div class="lifelineHeader">
+        <div class="lifeline-topic">
+          <div class="lifeline-header">
             <h2>
               Konferenzen
-              <span class="headingAddition">(Teilnehmer)</span>
+              <span class="heading-addition">(Teilnehmer)</span>
             </h2>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2023/2024</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2023/2024</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Cidaas Connect (Identity & Access Management) (2x
                     Speaker)</b>
@@ -619,10 +927,10 @@
               <div class="description"></div>
             </div>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2022-2024</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2022-2024</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Cloud Fest</b>
                 </p>
@@ -631,10 +939,10 @@
               <div class="description"></div>
             </div>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2022</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2022</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>DevOps Con Hybrid Edition</b>
                 </p>
@@ -643,10 +951,10 @@
               <div class="description"></div>
             </div>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2019</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2019</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Machine Learning-, IOT Conference</b>
                 </p>
@@ -655,10 +963,10 @@
               <div class="description"></div>
             </div>
           </div>
-          <div class="row lifelineSection">
-            <div class="col-sm-2 lifelineDate">2018</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2018</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Javascript-, Angular-, React-, HTML Days</b>
                 </p>
@@ -667,10 +975,10 @@
               <div class="description"></div>
             </div>
           </div>
-          <div class="row lifelineSection endPage2">
-            <div class="col-sm-2 lifelineDate">2017</div>
-            <div class="col-sm-10 lifelineContent">
-              <div class="d-flex justify-content-between position">
+          <div class="lifeline-section">
+            <div class="lifeline-date">2017</div>
+            <div class="lifeline-content">
+              <div class="position">
                 <p>
                   <b>Api-, Microservices Summit</b>
                 </p>
